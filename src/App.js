@@ -9,8 +9,10 @@ import Contact from "./pages/contact/Contact.js";
 import Home from "./pages/home/Home.js";
 import Projects from "./pages/projects/Projects.js";
 
+import "./App.sass";
+
 const App = ({ title }) => (
-  <div>
+  <div className="app-container">
     <Navigation />
     <Router>
       <Switch>

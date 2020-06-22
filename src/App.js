@@ -11,7 +11,7 @@ import Projects from "./pages/projects/Projects.js";
 
 import "./App.sass";
 
-const App = ({ title }) => (
+const App = () => (
   <div className="app-container">
     <Navigation />
     <Router>

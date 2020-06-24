@@ -1,16 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-import './Navigation.sass';
+import "./Navigation.sass";
 
 const Navigation = () => (
-  <div>
-    <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Background</li>
-        <li>Contact</li>
-        <li>Projects</li>
-    </ul>
+  <div className="nav-links">
+    <Link to="/">Home</Link>
+    <Link to="/about">About</Link>
+    <Link to="/background">Background</Link>
+    <Link to="/contact">Contact</Link>
+    <Link to="/projects">Projects</Link>
   </div>
 );
 

@@ -13,13 +13,12 @@ import "./App.sass";
 
 const App = () => (
   <div className="app-container">
-    <Navigation />
     <Router>
+      <Navigation />
       <Switch>
         <Route exact path="/">
           <Home />
         </Route>
-
         <Route path="/about">
           <About />
         </Route>

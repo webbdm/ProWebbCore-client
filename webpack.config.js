@@ -1,6 +1,8 @@
-const path = require('path');
+const path = require("path");
 const webpack = require("webpack");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const Dotenv = require("dotenv-webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -9,7 +11,11 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"],
+        loader: "babel-loader",
+        options: {
+          presets: ["@babel/preset-env", "@babel/react"],
+          plugins: ["@babel/plugin-transform-runtime"],
+        },
       },
       {
         test: /\.s[ac]ss$/i,
@@ -33,6 +39,7 @@ module.exports = {
     filename: "bundle.js",
   },
   plugins: [
+    new Dotenv(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       // injects bundle.js to our new index.html

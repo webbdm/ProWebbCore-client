@@ -1,18 +1,64 @@
+$panel-background: #1a1a54
+$header-color: white
+$text-color: #e4ebf9
+$accent-color: #1fc1d6
+
+.panel
+    width: 100%
+    padding: 12px
+    background-color: $panel-background
+    border-radius: 5px
+    margin: 0 10px
+
 .resume-panel
     min-height: 100%
+    h2, h3
+        color: $header-color
+    p
+        color: $text-color
     .user
+        &-wrapper
+            height: 100%
         &-panel
-            padding: 5%
+            height: 100%
+            width: 100%
             img
-                height: 10%px
-                width: auto
+                height: auto
+                width: 100%
             h2
+                color: $header-color
                 font-size: 3.5rem
         &-education-panel
+        &-education-school
+            text-align: left
 
-    .work-panel
+    .work-wrapper
+        padding: 0
         .skill-panel
+            margin: 0
+            img
+                margin: 5px
+                height: 100px
+                width: 100px
+
         .job
             &-panel
+                margin: 5px 0
+                height: 100%
             &-info
-                
+                h2
+                    display: flex
+                    flex-direction: row
+                    justify-content: space-between
+                    align-content: baseline
+                    padding: 0 0 4px 0
+                    border-bottom: 2px solid $accent-color
+                    .job-dates
+                        display: inline-block
+                        margin-top: 14px
+                        font-size: 25px
+
+
+                width: 100%
+                text-align: left
+

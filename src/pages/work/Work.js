@@ -11,14 +11,10 @@ const Work = () => {
   if (!user) return null;
 
   return (
-    <div>
-      <div className="work-wrapper">
         <Resume
           name={`${user.firstName + " " + user.lastName}`}
           resumes={user.resumes}
         />
-      </div>
-    </div>
   );
 };
 

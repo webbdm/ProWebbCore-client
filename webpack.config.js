@@ -3,6 +3,7 @@ const webpack = require("webpack");
 
 const Dotenv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -28,6 +29,10 @@ module.exports = {
           "sass-loader",
         ],
       },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ["file-loader"],
+      },
     ],
   },
   resolve: {
@@ -48,6 +53,7 @@ module.exports = {
       // copys the content of the existing index.html to the new /build index.html
       template: path.resolve("./index.html"),
     }),
+    // new CopyWebpackPlugin({ patterns: [{ from: path.resolve(__dirname, "/assets"), to: "assets" }] }),
   ],
   devServer: {
     contentBase: "./build",

@@ -13,7 +13,10 @@ const Work = () => {
   return (
     <div>
       <div className="work-wrapper">
-        <Resume resumes={user.resumes} />
+        <Resume
+          name={`${user.firstName + " " + user.lastName}`}
+          resumes={user.resumes}
+        />
       </div>
     </div>
   );

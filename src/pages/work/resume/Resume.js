@@ -9,6 +9,17 @@ import DotnetIcon from "../../../../assets/dotnet_core_logo.svg";
 
 import "./Resume.sass";
 
+const Job = ({ name, title, dates, description }) => (
+  <div className="job-info">
+    <div className="job-company">
+      <span className="job-company-name">{name}</span>
+      <span className="job-dates">{dates}</span>
+    </div>
+    <p className="job-title">{title}</p>
+    <div className="job-description">{description}</div>
+  </div>
+);
+
 const Resume = ({ name, resumes }) => {
   const [resume, setResume] = useState(resumes[0]);
 
@@ -53,13 +64,18 @@ const Resume = ({ name, resumes }) => {
         </Row>
         <Row className="job-panel panel">
           <div className="job-info">
-            <div className="job-company">Atiba</div>
+            <div className="job-company">
+              <span className="job-company-name">Atiba</span>
+              <span className="job-dates"></span>
+            </div>
             <p className="job-title">Software Developer</p>
             <div className="job-description"></div>
           </div>
           <div className="job-info">
             <div className="job-company">
-              Gilbert | McLaughlin | Casella architects{" "}
+              <span className="job-company-name">
+                Gilbert | McLaughlin | Casella architects{" "}
+              </span>
               <span className="job-dates">2015-2017</span>
             </div>
             <p className="job-title">Marketing & Office Coordinator</p>
@@ -67,21 +83,24 @@ const Resume = ({ name, resumes }) => {
           </div>
           <div className="job-info">
             <div className="job-company">
-              Crowd Surf <span className="job-dates">Fall 2014</span>
+              <span className="job-company-name">Crowd Surf</span>
+              <span className="job-dates">Fall 2014</span>
             </div>
             <p className="job-title">Marketing Intern</p>
             <div className="job-description"></div>
           </div>
           <div className="job-info">
             <div className="job-company">
-              MCN Interactive <span className="job-dates">Summer 2014</span>
+              <span className="job-company-name">MCN Interactive</span>
+              <span className="job-dates">Summer 2014</span>
             </div>
             <p className="job-title">Marketing Intern</p>
             <div className="job-description"></div>
           </div>
           <div className="job-info">
             <div className="job-company">
-              Rockhouse Partners <span className="job-dates">Spring 2014</span>
+              <span className="job-company-name">Rockhouse Partners</span>
+              <span className="job-dates">Spring 2014</span>
             </div>
             <p className="job-title">Marketing Intern</p>
             <div className="job-description"></div>

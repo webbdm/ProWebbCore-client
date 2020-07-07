@@ -1,11 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import App from './App';
+
+import App from "./App";
+import Store from "./Store";
 
 ReactDOM.render(
-    <App />,
-    document.getElementById('app')
+  <Store>
+    <App />
+  </Store>,
+  document.getElementById("app")
 );
 
 module.hot.accept();

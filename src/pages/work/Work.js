@@ -7,10 +7,10 @@ import "./Work.sass";
 
 const Work = () => {
   const [user] = useContext(UserContext);
-  
+
   console.log(user, "WORK");
 
-  if (!user || !user.resumes) return null;
+  if (!user) return null;
 
   return (
     <Resume

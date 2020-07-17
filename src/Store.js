@@ -7,7 +7,7 @@ export const UserContext = React.createContext("User");
 const Store = ({ children }) => {
   const [user, setUser] = useState(null); // TODO: Add auth. Temporarily just use 1 because I'm the only User in the db
 
-  const { data } = useFetch(() => userApi.getUser(1));
+  const { data } = useFetch(async () => await userApi.getUser(1));
 
   useEffect(() => {
     setUser(data); // // TODO: Add auth. Temporarily just use 1 because I'm the only User in the db;

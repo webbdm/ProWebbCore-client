@@ -10,6 +10,7 @@ const Store = ({ children }) => {
   const { data } = useFetch(async () => await userApi.getUser(1));
 
   useEffect(() => {
+    console.log(data);
     setUser(data); // // TODO: Add auth. Temporarily just use 1 because I'm the only User in the db;
   }, [data]);
 

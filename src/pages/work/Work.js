@@ -10,7 +10,7 @@ const Work = () => {
 
   console.log(user, "WORK");
 
-  if (!user) return null;
+  if (!user) return <h1>Loading...</h1>;
 
   return (
     <Resume

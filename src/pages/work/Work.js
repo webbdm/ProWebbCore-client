@@ -8,8 +8,9 @@ import "./Work.sass";
 const Work = () => {
   const [user] = useContext(UserContext);
 
-  if (!user || !user.resumes.length) return null;
+  if (!user || !user.resumes) return null;
 
+  console.log(user, "WORK");
   return (
     <Resume
       name={`${user.firstName + " " + user.lastName}`}

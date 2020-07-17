@@ -8,7 +8,7 @@ import "./Work.sass";
 const Work = () => {
   const [user] = useContext(UserContext);
 
-  if (!user && !user.resumes.length) return null;
+  if (!user || !user.resumes.length) return null;
 
   return (
     <Resume

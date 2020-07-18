@@ -53,8 +53,7 @@ module.exports = {
       template: path.resolve("./index.html"),
     }),
     new webpack.DefinePlugin({
-      "process.env.API_BASE_URL": JSON.stringify(false),
-      "API_BASE_URL": JSON.stringify(false),
+      "process.env.API_BASE_URL": JSON.stringify(process.env.API_BASE_URL),
     }),
     // new CopyWebpackPlugin({ patterns: [{ from: path.resolve(__dirname, "/assets"), to: "assets" }] }),
   ],

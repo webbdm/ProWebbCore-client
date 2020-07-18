@@ -3,12 +3,31 @@ import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
 import LaravelIcon from "../../../../assets/laravel_logo.svg";
+import NodeIcon from "../../../../assets/node_logo.svg";
 import ReactIcon from "../../../../assets/react_logo.svg";
 import PHPIcon from "../../../../assets/php_logo.svg";
 import ProfileImage from "../../../../assets/gwebb_profile.jpg";
 import DotnetIcon from "../../../../assets/dotnet_core_logo.svg";
 
 import "./Resume.sass";
+
+// Using this for now until S3 Image storage is configured
+const mapSkillImages = (name) => {
+  switch (name) {
+    case "React":
+      return ReactIcon;
+    case "C#":
+      return DotnetIcon;
+    case "Node":
+      return NodeIcon;
+    case "PHP":
+      return PHPIcon;
+    case "Laravel":
+      return LaravelIcon;
+    default:
+      break;
+  }
+};
 
 const Job = ({ name, title, dates, description }) => (
   <div className="job-info">
@@ -51,17 +70,14 @@ const Resume = ({ name, resumes }) => {
       </Col>
       <Col lg={8} sm={12} className="work-wrapper">
         <Row className="skill-panel panel justify-content-between">
-          {/* Will source from API Data later */}
-          {/* {resume.skills.map((skill) => (
+          {resume.skills.map((skill) => (
             <Col key={skill.name} md>
-              <span>{skill.name}</span>
+              <div className="skill-wrapper">
+                <img src={mapSkillImages(skill.name)} />
+                <span className="skill-name">{skill.name}</span>
+              </div>
             </Col>
-          ))} */}
-          {/* // TODO: Use from S3 or AWS CDN */}
-          <img src={ReactIcon} />
-          <img src={DotnetIcon} />
-          <img src={LaravelIcon} />
-          <img src={PHPIcon} />
+          ))}
         </Row>
         <Row className="job-panel panel">
           <div className="job-info">

@@ -63,9 +63,15 @@ $accent-color: #1fc1d6
         // margin
         .skill-panel
             margin: 0 // Override bootsrap row that give it some odd margins
-            img
-                height: 100px
-                width: 100px
+            .skill-wrapper
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .skill-name
+                    color: $text-color
+                img
+                    height: 100px
+                    width: 100px
 
         .job
             &-panel

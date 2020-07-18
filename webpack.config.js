@@ -52,6 +52,10 @@ module.exports = {
       // copys the content of the existing index.html to the new /build index.html
       template: path.resolve("./index.html"),
     }),
+    new webpack.DefinePlugin({
+      "process.env.API_BASE_URL": JSON.stringify(false),
+      "API_BASE_URL": JSON.stringify(false),
+    }),
     // new CopyWebpackPlugin({ patterns: [{ from: path.resolve(__dirname, "/assets"), to: "assets" }] }),
   ],
   devServer: {

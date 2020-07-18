@@ -5,6 +5,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import LaravelIcon from "../../../../assets/laravel_logo.svg";
 import ReactIcon from "../../../../assets/react_logo.svg";
 import PHPIcon from "../../../../assets/php_logo.svg";
+import ProfileImage from "../../../../assets/gwebb_profile.jpg";
 import DotnetIcon from "../../../../assets/dotnet_core_logo.svg";
 
 import "./Resume.sass";
@@ -27,7 +28,7 @@ const Resume = ({ name, resumes }) => {
     <div className="resume-panel d-flex flex-row flex-wrap">
       <Col lg={4} sm={12} className="user-wrapper">
         <div className="user-panel panel">
-          <img src="https://avatars3.githubusercontent.com/u/13399339?s=460&u=e68da19dc1c8782f445ffaacbb5a3a55074e185f&v=4" />
+          <img src={ProfileImage} />
           <h3 className="user-name">{name}</h3>
           <p className="user-tagline">
             Software Developer at Atiba and a passion for solving puzzles

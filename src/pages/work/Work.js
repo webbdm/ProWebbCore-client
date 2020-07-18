@@ -8,8 +8,6 @@ import "./Work.sass";
 const Work = () => {
   const [user] = useContext(UserContext);
 
-  console.log(user, "WORK");
-
   if (!user) return <h1>Loading...</h1>;
 
   return (

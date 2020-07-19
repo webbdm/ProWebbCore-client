@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
-import { Col, Container, Row } from "react-bootstrap";
+import PropTypes from "prop-types";
+import moment from "moment";
 
 import LaravelIcon from "../../../../assets/laravel_logo.svg";
 import NodeIcon from "../../../../assets/node_logo.svg";
@@ -29,28 +29,46 @@ const mapSkillImages = (name) => {
   }
 };
 
-const Job = ({ name, title, dates, description }) => (
-  <div className="job-info">
-    <div className="job-company">
-      <span className="job-company-name">{name}</span>
-      <span className="job-dates">{dates}</span>
+const Job = ({ job }) => {
+  const { description, employer, title, startDate, endDate } = job;
+  return (
+    <div className="job-info">
+      <div className="job-employer">
+        <span className="job-employer-name">{employer}</span>
+        <span className="job-dates">
+          {endDate ? (
+            <React.Fragment>
+              {moment(startDate).format("MMM YYYY")} -{" "}
+              {moment(endDate).format("MMM YYYY")}
+            </React.Fragment>
+          ) : null}
+        </span>
+      </div>
+      <p className="job-title">{title}</p>
+      <p className="job-description">{description}</p>
     </div>
-    <p className="job-title">{title}</p>
-    <div className="job-description">{description}</div>
-  </div>
-);
+  );
+};
+
+Job.propTypes = {
+  description: PropTypes.string,
+  employer: PropTypes.string,
+  title: PropTypes.string,
+  startDate: PropTypes.instanceOf(Date),
+  endDate: PropTypes.instanceOf(Date),
+};
 
 const Resume = ({ name, resumes }) => {
   const [resume, setResume] = useState(resumes[0]);
 
   return (
-    <div className="resume-panel d-flex flex-row flex-wrap">
-      <Col lg={4} sm={12} className="user-wrapper">
+    <div className="resume-panel h-100 d-flex flex-row flex-nowrap">
+      <div className="user-wrapper">
         <div className="user-panel panel">
           <img src={ProfileImage} />
           <h3 className="user-name">{name}</h3>
           <p className="user-tagline">
-            Software Developer at Atiba and a passion for solving puzzles
+            Software Developer at Atiba with a passion for solving puzzles
           </p>
           <div className="user-education-panel">
             <div className="user-education-school">
@@ -67,63 +85,24 @@ const Resume = ({ name, resumes }) => {
             </div>
           </div>
         </div>
-      </Col>
-      <Col lg={8} sm={12} className="work-wrapper">
-        <Row className="skill-panel panel justify-content-between">
+      </div>
+      <div className="work-wrapper">
+        <div className="skill-panel panel justify-content-between">
           {resume.skills.map((skill) => (
-            <Col key={skill.name} md>
+            <div key={skill.name}>
               <div className="skill-wrapper">
                 <img src={mapSkillImages(skill.name)} />
                 <span className="skill-name">{skill.name}</span>
               </div>
-            </Col>
+            </div>
           ))}
-        </Row>
-        <Row className="job-panel panel">
-          <div className="job-info">
-            <div className="job-company">
-              <span className="job-company-name">Atiba</span>
-              <span className="job-dates"></span>
-            </div>
-            <p className="job-title">Software Developer</p>
-            <div className="job-description"></div>
-          </div>
-          <div className="job-info">
-            <div className="job-company">
-              <span className="job-company-name">
-                Gilbert | McLaughlin | Casella architects{" "}
-              </span>
-              <span className="job-dates">2015-2017</span>
-            </div>
-            <p className="job-title">Marketing & Office Coordinator</p>
-            <div className="job-description"></div>
-          </div>
-          <div className="job-info">
-            <div className="job-company">
-              <span className="job-company-name">Crowd Surf</span>
-              <span className="job-dates">Fall 2014</span>
-            </div>
-            <p className="job-title">Marketing Intern</p>
-            <div className="job-description"></div>
-          </div>
-          <div className="job-info">
-            <div className="job-company">
-              <span className="job-company-name">MCN Interactive</span>
-              <span className="job-dates">Summer 2014</span>
-            </div>
-            <p className="job-title">Marketing Intern</p>
-            <div className="job-description"></div>
-          </div>
-          <div className="job-info">
-            <div className="job-company">
-              <span className="job-company-name">Rockhouse Partners</span>
-              <span className="job-dates">Spring 2014</span>
-            </div>
-            <p className="job-title">Marketing Intern</p>
-            <div className="job-description"></div>
-          </div>
-        </Row>
-      </Col>
+        </div>
+        <div className="job-panel panel">
+          {resume.jobs.map((job) => (
+            <Job job={job} key={job.employer} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

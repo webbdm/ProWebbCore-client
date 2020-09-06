@@ -62,7 +62,7 @@ const Resume = ({ name, resumes }) => {
   const [resume, setResume] = useState(resumes[0]);
 
   return (
-    <div className="resume-panel h-100 d-flex flex-row flex-nowrap">
+    <div className="resume-panel h-100 d-flex flex-row flex-wrap">
       <div className="user-wrapper">
         <div className="user-panel panel">
           <img src={ProfileImage} />

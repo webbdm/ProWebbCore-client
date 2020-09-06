@@ -10,13 +10,26 @@ $accent-color: #1fc1d6
     border-radius: 5px
 
 .user-wrapper
+    display: flex
+    flex-direction: column
     flex-grow: 1
+    min-width: 30%
 
 .work-wrapper
     flex-grow: 3
 
 .user-wrapper, .work-wrapper
     padding: 12px 
+
+@media(min-width: 1024px) 
+    .resume-panel
+        flex-wrap: nowrap
+        .user-wrapper
+            max-width: 20%
+        .work-wrapper 
+            max-width: 70%
+  
+
     
 .resume-panel
     min-height: 100%
@@ -27,15 +40,11 @@ $accent-color: #1fc1d6
         color: $text-color
     .user
         &-wrapper
-            height: 100%
-            //margin-bottom: 5px
-            //padding: 0
         &-panel
             height: 100%
-            width: 100%
             padding: 0
             img
-                height: 100%
+                height: auto
                 width: 100%
                 border-radius: 5px 5px 0 0 
                 border-bottom: 2px solid $accent-color
@@ -65,8 +74,8 @@ $accent-color: #1fc1d6
                 text-align: left
 
     .work-wrapper
-        //padding: 0
-        // margin
+        display: flex
+        flex-direction: column
         .skill-panel
             display: flex
             flex-flow: row wrap
@@ -87,12 +96,12 @@ $accent-color: #1fc1d6
                 max-height: 100%
                 display: flex
                 flex-direction: column
+                justify-content: space-between
+                flex-grow: 1
             &-info
-                width: 100%
                 text-align: left
                 .job-employer
                     font-weight: bold
-                    width: 100%
                     display: flex
                     flex-direction: row
                     justify-content: space-between
@@ -103,13 +112,11 @@ $accent-color: #1fc1d6
                         display: block
                         font-size: 20px
                         color: $header-color 
-                        width: 100%
                         margin-top: 14px
                     .job-dates
                         color: $header-color 
                         display: block
                         margin-top: 14px
                         font-size: 20px
-                        width: 100%
                         text-align: right
 

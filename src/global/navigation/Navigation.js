@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import LinkedIn from "../../../assets/linkedin_2.svg";
+import GitHub from "../../../assets/github_logo.png";
 
 import "./Navigation.sass";
 
@@ -10,6 +11,9 @@ const Navigation = () => (
     <div className="social-links">
       <a href="https://www.linkedin.com/in/geoff-webb-85637586">
         <img src={LinkedIn} />
+      </a>
+      <a href="https://github.com/webbdm">
+        <img src={GitHub} />
       </a>
     </div>
     <div>

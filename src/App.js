@@ -15,8 +15,7 @@ import "../styles/App.sass";
 
 
 const App = () => (
-  <Container className="app-container" fluid>
-    <div>
+  <div className="app-container">
       <Router>
         <Navigation />
         <Switch>
@@ -40,8 +39,7 @@ const App = () => (
           </Route>
         </Switch>
       </Router>
-    </div>
-  </Container>
+  </div>
 );
 
 export default App;

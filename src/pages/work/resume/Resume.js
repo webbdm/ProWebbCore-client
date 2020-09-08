@@ -89,7 +89,7 @@ const Resume = ({ name, resumes }) => {
       <div className="work-wrapper">
         <div className="skill-panel panel justify-content-between">
           {resume.skills.map((skill) => (
-            <div key={skill.name}>
+            <div className="m-1" key={skill.name}>
               <div className="skill-wrapper">
                 <img src={mapSkillImages(skill.name)} />
                 <span className="skill-name">{skill.name}</span>

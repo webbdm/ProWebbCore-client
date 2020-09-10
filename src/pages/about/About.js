@@ -13,7 +13,7 @@ const About = () => {
       <img
         className="m-4 rounded"
         src={ProfilePhoto}
-        style={{ height: 400, width: "auto" }}
+        style={{ height: "auto", width: "35vw" }}
       />
       <div>
         <p className="m-4 w-7 text-white text-left">

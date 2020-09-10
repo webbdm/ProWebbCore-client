@@ -13,7 +13,7 @@ const About = () => {
       <img
         className="m-4 rounded"
         src={ProfilePhoto}
-        style={{ height: "auto", width: "35vw" }}
+        style={{ height: "35vh", width: "auto" }}
       />
       <div>
         <p className="m-4 w-7 text-white text-left">
@@ -28,7 +28,7 @@ const About = () => {
           instant zeal to learn the craft of creating visually impressive and
           immersive websites. After 2 years of continued work in marketing, web
           development became something I did not because it was work, but
-          because it was my passion. To me, it’s like solving a giant puzzle or
+          because it was my passion. To me, software is like solving a giant puzzle or
           having a Lego set with endless possibilities. Four incredible years
           into software development, I'm still always waking up each day looking forward
           to the next tech idea that I can make a reality.

@@ -13,9 +13,8 @@ import "../assets/styles.css";
 
 
 const App = () => (
-  <div className="app">
+  <div className="h-full bg-background">
       <Router>
-        <Navigation />
         <Switch>
           <Route exact path="/">
             <Home />

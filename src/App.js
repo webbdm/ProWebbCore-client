@@ -9,7 +9,7 @@ import Contact from "./pages/contact/Contact.js";
 import Home from "./pages/home/Home.js";
 import Projects from "./pages/projects/Projects.js";
 
-import "../styles/main.sass";
+import "../assets/styles.css";
 
 
 const App = () => (

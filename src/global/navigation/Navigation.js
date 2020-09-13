@@ -7,7 +7,7 @@ import GitHub from "../../../assets/github_logo.png";
 import "./Navigation.css";
 
 const Navigation = () => (
-  <div className="flex flex-row sticky top-0 bg-background items-center justify-end w-full self-end -mr-2">
+  <div className="flex flex-row sticky top-0 bg-background items-center justify-end w-full self-end ">
     <div className="social-links lg:hidden flex flex-row border-accent border-b-2">
       <a
         className="my-2 mr-12"

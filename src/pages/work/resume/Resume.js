@@ -37,11 +37,12 @@ const Job = ({ job }) => {
         <span className="job-employer-name text-xl font-bold py-1">
           {employer}
         </span>
-        <span className="job-dates text-xl text-right font-bold py-1">
+        <span className="job-dates flex flex-row flex-wrap justify-end text-xl text-right font-bold py-1">
           {endDate ? (
             <React.Fragment>
-              {moment(startDate).format("MMM YYYY")} -{" "}
-              {moment(endDate).format("MMM YYYY")}
+              <span>{moment(startDate).format("MMM YYYY")}</span>{" "}
+              <span className="mx-2"> - </span>
+              <span>{moment(endDate).format("MMM YYYY")}</span>
             </React.Fragment>
           ) : null}
         </span>
@@ -74,7 +75,7 @@ const Resume = ({ name, resumes }) => {
         <h1 className="user-name text-5xl px-2 text-center text-white">
           {name}
         </h1>
-        <p className="user-tagline px-2">
+        <p className="user-tagline my-2 px-2">
           Software Developer at Atiba with a passion for solving puzzles
         </p>
         <div className="user-education-panel p-2">
@@ -104,7 +105,7 @@ const Resume = ({ name, resumes }) => {
             </div>
           ))}
         </div>
-        <div className="job-panel bg-panel rounded-md text-white px-2 m-2">
+        <div className="job-panel bg-panel rounded-md text-white pt-1 p-3 m-2">
           {resume.jobs.map((job) => (
             <Job job={job} key={job.employer} />
           ))}

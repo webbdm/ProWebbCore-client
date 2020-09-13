@@ -16,7 +16,10 @@ const MainLogo = () => (
 const Home = () => (
   <div className="h-screen home-wrapper flex flex-col justify-between p-2">
     <div className="home-nav flex flex-row justify-between self-end border-accent w-24 border-b-2 -mr-2">
-      <a className="my-2" href="https://www.linkedin.com/in/geoff-webb-85637586">
+      <a
+        className="my-2"
+        href="https://www.linkedin.com/in/geoff-webb-85637586"
+      >
         <img className="icon" src={LinkedIn} />
       </a>
       <a className="my-2 mr-4" href="https://github.com/webbdm">

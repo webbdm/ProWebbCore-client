@@ -11,7 +11,7 @@ const Work = () => {
   if (!user) return <h1>Loading...</h1>;
 
   return (
-    <div className="flex flex-row justify-center">
+    <div className="flex flex-row justify-center p-2">
       <Resume
         name={`${user.firstName + " " + user.lastName}`}
         resumes={user.resumes}

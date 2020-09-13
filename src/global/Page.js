@@ -6,9 +6,9 @@ import Sidebar from "./Sidebar";
 const Page = ({ component }) => {
   return (
     <div className="flex flex-row w-full">
-      {/* <Sidebar /> */}
+      <Sidebar />
       <div className="flex flex-col justify-between">
-        {/* <Navigation /> */}
+        <Navigation />
         {component()}
       </div>
     </div>

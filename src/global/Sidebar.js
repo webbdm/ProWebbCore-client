@@ -16,8 +16,15 @@ const Sidebar = () => (
       </Link>
     </div>
     <div className="my-2">
-      <img className="my-8 icon" src={LinkedIn} />
-      <img className="my-8 icon" src={GitHub} />
+      <a
+        className="block my-8"
+        href="https://www.linkedin.com/in/geoff-webb-85637586"
+      >
+        <img className="icon" src={LinkedIn} />
+      </a>
+      <a className="block my-8" href="https://github.com/webbdm">
+        <img className="icon" src={GitHub} />
+      </a>
     </div>
   </div>
 );

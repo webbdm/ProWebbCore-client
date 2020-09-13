@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import Resume from "./resume/Resume";
 
 import { UserContext } from "../../Store";
@@ -11,10 +11,12 @@ const Work = () => {
   if (!user) return <h1>Loading...</h1>;
 
   return (
-    <Resume
-      name={`${user.firstName + " " + user.lastName}`}
-      resumes={user.resumes}
-    />
+    <div className="flex flex-row justify-center">
+      <Resume
+        name={`${user.firstName + " " + user.lastName}`}
+        resumes={user.resumes}
+      />
+    </div>
   );
 };
 

@@ -11,14 +11,14 @@ import Projects from "./pages/projects/Projects.js";
 import "../assets/styles.css";
 
 const App = () => (
-  <div className="h-full bg-background">
+  <div className="h-screen bg-background">
     <Router>
       <Switch>
         <Route exact path="/">
           <Home />
         </Route>
         <Route path="/about">
-          <About />
+          <Page component={About} />
         </Route>
 
         <Route path="/work">
@@ -26,11 +26,11 @@ const App = () => (
         </Route>
 
         <Route path="/contact">
-          <Contact />
+          <Page component={Contact} />
         </Route>
 
         <Route path="/projects">
-          <Projects />
+          <Page component={Projects} />
         </Route>
       </Switch>
     </Router>

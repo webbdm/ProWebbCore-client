@@ -1,7 +1,7 @@
 import React from "react";
 
 const Projects = () => (
-  <div>
+  <div className="h-auto">
     <h2 className="p-5 text-white">
       First and foremost, my main personal project right now is this very
       website. What you're seeing is a React app powered by a .NET Core API

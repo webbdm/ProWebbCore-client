@@ -44,7 +44,9 @@ const Job = ({ job }) => {
               <span className="mx-2"> - </span>
               <span>{moment(endDate).format("MMM YYYY")}</span>
             </React.Fragment>
-          ) : null}
+          ) : (
+            <div>gwebb@atiba.com</div>
+          )}
         </span>
       </div>
       <p className="job-title mb-4 my-1">{title}</p>

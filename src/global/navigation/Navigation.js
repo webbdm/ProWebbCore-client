@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import LinkedIn from "../../../assets/linkedin_2.svg";
 import GitHub from "../../../assets/github_logo.png";
@@ -21,9 +21,19 @@ const Navigation = () => (
     </div>
     <div className="page-links py-2 text-white border-accent lg:flex xl:flex hidden border-b-2">
       {/* <Link className="text-xl mr-4" to="/">Home</Link> */}
-      <Link className="text-xl mr-12" to="/work">Work</Link>
-      <Link className="text-xl mr-12" to="/projects">Projects</Link>
-      <Link className="text-xl mr-12" to="/about">About</Link>
+      {[
+        { name: "Work", path: "/work" },
+        { name: "Projects", path: "/projects" },
+        { name: "About", path: "/about" },
+      ].map((link) => (
+        <NavLink
+          className="text-xl mr-12"
+          activeStyle={{ fontWeight: "bold" }}
+          to={link.path}
+        >
+          {link.name}
+        </NavLink>
+      ))}
     </div>
   </div>
 );

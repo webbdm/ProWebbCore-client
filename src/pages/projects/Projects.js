@@ -2,7 +2,8 @@ import React from "react";
 
 const Projects = () => (
   <div className="h-full flex flex-col p-8">
-    <h2 className="p-5 text-white">
+    <h2 className="text-white text-2xl border-b-2 border-accent">webbdm.net</h2>
+    <h2 className="p-5 pl-0 text-white text-left">
       First and foremost, my main personal project right now is this very
       website. What you're seeing is a React app powered by a .NET Core API
       (fully functional CMS) behind NGINX, running on a Digital Ocean Ubuntu
@@ -27,9 +28,14 @@ const Projects = () => (
       ].map((project) => (
         <div className="flex flex-col text-white">
           <h2 className="text-2xl border-b-2 border-accent">{project.name}</h2>
-          <div className="flex flex-row py-1">
-            <img className="h-32 w-auto mt-4 mr-4 rounded-sm" src={project.image} />
-            <div className="p-4">{project.description}</div>
+          <div className="flex flex-row flex-wrap py-1">
+            <div className="pt-4">
+              <img
+                className="h-32 mr-4 mb-2 float-left w-auto rounded-sm"
+                src={project.image}
+              />
+              <p className="mt-0">{project.description}</p>
+            </div>
           </div>
         </div>
       ))}

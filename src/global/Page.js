@@ -7,7 +7,7 @@ const Page = ({ component }) => {
   return (
     <div className="flex flex-row w-full h-full">
       <Sidebar />
-      <div className="flex flex-col justify-between">
+      <div className="flex flex-col justify-start">
         <Navigation />
         {component()}
       </div>

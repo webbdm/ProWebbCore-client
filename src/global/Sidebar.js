@@ -8,9 +8,9 @@ import "./Sidebar.css";
 
 const Sidebar = () => (
   <div
-    className="sidebar hidden lg:flex xl:flex h-auto px-2 bg-panel flex-col justify-start items-center"
+    className="sidebar hidden lg:flex xl:flex h-100 px-2 bg-panel flex-col justify-start items-center"
   >
-    <div className="sticky top-0 flex flex-col items-center w-full">
+    <div className="sticky top-0 flex flex-col items-center h-100 w-full">
       <Link to="/">
         <div className="rounded border-2 border-accent px-2 mt-4 text-center">
           <span className="text-white inline-block text-4xl m-1">W</span>

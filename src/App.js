@@ -11,7 +11,7 @@ import Projects from "./pages/projects/Projects.js";
 import "../assets/styles.css";
 
 const App = () => (
-  <div className="h-screen bg-background">
+  <div className="h-full bg-background">
     <Router>
       <Switch>
         <Route exact path="/">

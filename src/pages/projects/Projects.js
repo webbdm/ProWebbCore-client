@@ -37,19 +37,20 @@ const Projects = () => (
         },
       ].map((project) => (
         <div className="flex flex-col text-white">
-          <div className="flex flex-row justify-start items-center border-b-2 border-accent">
-            <a href={project.link}>
-              <h2 className="text-2xl ">{project.name}</h2>
-            </a>
-          </div>
+          <a
+            href={project.link}
+            className="flex flex-row justify-start items-center border-b-2 border-accent hover:font-semibold"
+          >
+            <h2 className="text-2xl ">{project.name}</h2>
+          </a>
           <div className="flex flex-row flex-wrap py-1">
-            <a href={project.link} className="pt-4">
+            <div className="pt-4">
               <img
-                className="h-32 mr-4 mb-2 float-left w-auto rounded-sm"
+                className="h-32 mr-4 mb-2 mt-1 float-left w-auto rounded-sm"
                 src={project.image}
               />
               <p className="mt-0">{project.description}</p>
-            </a>
+            </div>
           </div>
         </div>
       ))}

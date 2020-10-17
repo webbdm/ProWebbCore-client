@@ -4,7 +4,8 @@
 
 @import "tailwindcss/utilities";
 
-#app, html {
+#app,
+html {
   min-height: 100vh;
 }
 
@@ -18,4 +19,12 @@ body {
 .icon {
   height: 25px;
   width: 25px;
+}
+
+.sticky-all {
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -o-sticky;
+  position: -ms-sticky;
+  position: sticky;
 }

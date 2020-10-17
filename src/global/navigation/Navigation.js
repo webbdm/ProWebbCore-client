@@ -11,7 +11,7 @@ import "./Navigation.css";
 const Navigation = () => {
   const [showingDropdown, setShowingDropdown] = useState(false);
   return (
-    <div className="flex flex-row sticky top-0 bg-background items-center justify-end w-full self-end ">
+    <div className="flex flex-row sticky-all top-0 bg-background items-center justify-end w-full self-end ">
       <div className="social-links lg:hidden flex flex-row border-accent border-b-2 items-center">
         <a
           className="my-2 mr-12"

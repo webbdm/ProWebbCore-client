@@ -27,6 +27,7 @@ const Navigation = () => (
         { name: "About", path: "/about" },
       ].map((link) => (
         <NavLink
+          key={link.name}
           className="text-xl mr-12"
           activeStyle={{ fontWeight: "bold" }}
           to={link.path}

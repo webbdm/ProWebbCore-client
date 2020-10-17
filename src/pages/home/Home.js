@@ -30,7 +30,7 @@ const Home = () => (
       <div className="flex flex-col justify-center items-center">
         <MainLogo />
         <h1 className="text-white text-center m-2">
-          Visually-minded software developer with a passion for solivng puzzles
+          Visually-minded software developer with a passion for solving puzzles
         </h1>
       </div>
     </div>

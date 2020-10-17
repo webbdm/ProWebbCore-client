@@ -18,7 +18,7 @@ module.exports = {
         },
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.(sa|sc|c)ss$/,
         use: [
           // Creates `style` nodes from JS strings
           "style-loader",
@@ -54,6 +54,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       "process.env.API_BASE_URL": JSON.stringify(process.env.API_BASE_URL),
+      "process.env.BUCKET_URL": JSON.stringify(process.env.BUCKET_URL),
     }),
     // new CopyWebpackPlugin({ patterns: [{ from: path.resolve(__dirname, "/assets"), to: "assets" }] }),
   ],

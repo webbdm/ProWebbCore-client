@@ -38,10 +38,10 @@ const About = () => {
       <div className="clear-both w-100 mt-20 mx-4 border-t-2 border-accent"></div>
       <div className="mt-16 px-4 flex flex-row flex-wrap justify-between items-center">
         {[
-          { label: "Backpacking", url: "scsp_2018.jpg" },
+          { label: "Backpacking through Tennessee", url: "scsp_2018.jpg" },
           { label: "Final Vans Warped Tour", url: "warped_tour_2018.jpg" },
           { label: "Nashville Software School", url: "skill_hackathon.jpg" },
-          { label: "Titans Fan", url: "TNF_2018.jpg" },
+          { label: "Titans 2018 (Derrick Henry's 99-Yard TD Run)", url: "TNF_2018.jpg" },
         ].map((image) => (
           <div
             key={image.label}

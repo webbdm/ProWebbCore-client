@@ -1,8 +1,28 @@
 import React from "react";
 
+import LinkIcon from "../../../assets/link_icon.svg";
+
+const Tags = ({ tags }) => (
+  <div className="ml-2 flex flex-row">
+    {tags.map((tag) => (
+      <div
+        className="mx-2 px-2 p-1 pt-0 rounded bg-accent text-center text-primary text-xs"
+        key={tag}
+      >
+        {tag}
+      </div>
+    ))}
+  </div>
+);
+
 const Projects = () => (
   <div className="h-full flex flex-col p-8">
-    <h2 className="text-white text-2xl border-b-2 border-accent">webbdm.net</h2>
+    <div className="flex flex-row items-center border-b-2 border-accent">
+      <h2 className="text-white text-2xl">webbdm.net</h2>
+      <Tags
+        tags={["react", ".net", "S3", "nginx", "mysql"]}
+      />
+    </div>
     <h2 className="p-5 pl-0 text-white text-left">
       First and foremost, my main personal project right now is this very
       website. What you're seeing is a React app powered by a .NET Core API
@@ -15,9 +35,9 @@ const Projects = () => (
           name: "Trek",
           image: "Trek.png",
           link: "https://trekbase-dc9a5.firebaseapp.com/#!/auth",
-          tags: ["angularjs", "googlemaps", "firebase"],
+          tags: ["angularjs", "google maps", "firebase"],
           description:
-            "Trek was my Front-End capstone for Nashville Software School, and the first full-fledged web application I ever built. The inspiration for this wiki-style campsite & park database was my love of backpacking. Sometimes it’s hard to find locations & reviews for very specific campsites, especially if they are in the backcountry. Trek allows you to search for campsites by park, and add photos, comments, reviews, and coordinates to display the exact location with Google Maps. It was built with Angular 1.6, the Google Maps Javascript API, and Firebase.",
+            "Trek was my Front-End capstone for Nashville Software School, and the first full-fledged web application I ever built. The inspiration for this wiki-style campsite & park database was my love of backpacking. Sometimes it’s hard to find locations & reviews for very specific campsites, especially if they are in the backcountry. Trek allows you to search for campsites by park and add photos, comments, reviews, and coordinates to display the exact location with Google Maps. It was built with Angular 1.6, the Google Maps Javascript API, and Firebase.",
         },
         {
           name: "Macro Tracker",
@@ -25,7 +45,7 @@ const Projects = () => (
           link: "https://island-hopper.firebaseapp.com/",
           tags: ["react", "firebase", "chartjs"],
           description:
-            "The “Macro Tracker” was a tool I built in 2017 after learning React fundamentals. One of the most important parts of maintaining a workout & fitness plan is to track your nutrition & macros. I built this application with React, Firebase, and ChartJS",
+            "The “Macro Tracker” was a tool I built in 2017 after learning React fundamentals. One of the most important parts of maintaining a workout & fitness plan is to track your nutrition & macros. I built this application with React, Firebase, and ChartJS.",
         },
         {
           name: "TIL",
@@ -39,9 +59,11 @@ const Projects = () => (
         <div className="flex flex-col text-white">
           <a
             href={project.link}
-            className="flex flex-row justify-start items-center border-b-2 border-accent hover:font-semibold"
+            className="mt-2 flex flex-row justify-start items-center border-b-2 border-accent"
           >
-            <h2 className="text-2xl ">{project.name}</h2>
+            <h2 className="text-2xl hover:text-accent">{project.name}</h2>
+            <img className="ml-2 mr-1" src={LinkIcon} />
+            <Tags tags={project.tags} />
           </a>
           <div className="flex flex-row flex-wrap py-1">
             <div className="pt-4">
@@ -49,7 +71,13 @@ const Projects = () => (
                 className="h-32 mr-4 mb-2 mt-1 float-left w-auto rounded-sm"
                 src={`${process.env.BUCKET_URL}/${project.image}`}
               />
-              <p className="mt-0">{project.description}</p>
+              <p className="mt-0">
+                {project.description}
+                <a href={project.link} className="flex flex-row items-center ">
+                  <span className="font-semibold"> View Project: </span>
+                  <img className="ml-1 mt-1" src={LinkIcon} />
+                </a>
+              </p>
             </div>
           </div>
         </div>

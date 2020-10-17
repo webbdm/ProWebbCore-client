@@ -48,7 +48,7 @@ const About = () => {
             className="my-2 py-4 flex flex-col flex-grow items-center"
           >
             <img
-              className="h-56 w-56 rounded object-cover"
+              className="h-56 w-100 rounded object-cover"
               src={`${process.env.BUCKET_URL}/${image.url}`}
             />
             <p className="text-white w-full mt-1 text-center">{image.label}</p>

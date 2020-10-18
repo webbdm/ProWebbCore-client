@@ -31,7 +31,7 @@ const About = () => {
   if (!user) return null;
 
   return (
-    <div className="h-100 d-flex flex-col flex-wrap align-items-center justify-content-around mx-4">
+    <div className="h-100 d-flex flex-col flex-wrap align-items-center justify-content-around">
       <div className="px-4 pb-12">
         <img
           className="mt-1 mb-1 mr-4 lg:h-56 sm:h-64 w-auto rounded float-left"

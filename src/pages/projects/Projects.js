@@ -56,7 +56,7 @@ const Projects = () => (
             "For our project in the 1st Annual Nashville Software School Skill++ 24-Hour Hackathon, we created TIL (Today I Learned) which is an app to post anything new you've learned about tech. It was built with an Angular 1.6 Front-End, Elixir Back-End, and also features a Slack app that allows you to post, search, and control the app through your Slack team. My role on the team was Front-End developer, designing the UI & styles with Materialize as our framework. Check out the other team members on GitHub: @BlaiseGratton, @PreetiKRP, @aoswalt",
         },
       ].map((project) => (
-        <div className="flex flex-col text-white">
+        <div className="flex flex-col flex-shrink-0 text-white">
           <a
             href={project.link}
             className="mt-2 flex flex-row justify-start items-center border-b-2 border-accent"

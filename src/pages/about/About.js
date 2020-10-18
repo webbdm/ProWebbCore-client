@@ -5,7 +5,7 @@ import ProfilePhoto from "../../../assets/gwebb_profile.jpg";
 
 const PhotoGrid = ({ data }) => {
   return (
-    <div className="p-4 flex flex-wrap overflow-hidden md:-mx-5">
+    <div className="p-4 flex flex-wrap overflow-hidden">
       {data.map((image) => (
         <div
           key={image.label}

@@ -5,11 +5,10 @@ import ProfilePhoto from "../../../assets/gwebb_profile.jpg";
 
 const PhotoGrid = ({ data }) => {
   return (
-    <div className="p-4 flex flex-wrap -mx-3 overflow-hidden md:-mx-5">
+    <div className="p-4 flex flex-wrap overflow-hidden">
       {data.map((image) => (
         <div
           key={image.label}
-          // className="my-2 mx-2 max-w-sm overflow-hidden flex flex-col shadow-lg flex-grow items-center"
           className="my-3 px-3 w-full overflow-hidden md:my-5 md:px-5 lg:w-1/4"
         >
           <img
@@ -31,21 +30,21 @@ const About = () => {
   if (!user) return null;
 
   return (
-    <div className="h-100 d-flex flex-col flex-wrap align-items-center justify-content-around">
+    <div className="mt-3 h-full d-flex flex-col flex-wrap align-items-center justify-content-around">
       <div className="px-4 pb-12">
         <img
-          className="mt-1 mb-1 mr-4 lg:h-56 sm:h-64 w-auto rounded float-left"
+          className="mr-2 mt-1 lg:h-56 sm:h-64 sm:w-auto sm:h-auto md:w-auto rounded md:float-left"
           src={ProfilePhoto}
         />
 
         <p className="my-4 px-0 text-white text-left">
           Born and raised in Wichita, Kansas, I grew up making trips out West
-          hiking & snowboarding through the Rockies. I also had a passion for
-          music & entertainment, which led me to Nashville in 2011 when I
+          hiking and snowboarding through the Rockies. I also had a passion for
+          music and entertainment, which led me to Nashville in 2011 when I
           enrolled at Belmont University for music business. When I discovered
-          the music & incredible outdoor adventures Tennessee had to offer, I
+          the music and incredible outdoor adventures Tennessee had to offer, I
           knew it was the place for me. Working in entertainment marketing, I
-          found myself assisting with & managing numerous artist and brand
+          found myself assisting with and managing numerous artist and brand
           websites. The moment I started delving into the code, it sparked an
           instant zeal to learn the craft of creating visually impressive and
           immersive websites. After 2 years of continued work in marketing, web
@@ -57,7 +56,7 @@ const About = () => {
           reality.
         </p>
       </div>
-      <div className="clear-both w-100 mt-20 mx-4 border-t-2 border-accent"></div>
+      <div className="w-100 mt-20 mx-4 border-t-2 border-accent"></div>
       <PhotoGrid
         data={[
           { label: "Backpacking through Tennessee", url: "scsp_2018.jpg" },

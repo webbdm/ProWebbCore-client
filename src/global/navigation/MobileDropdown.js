@@ -7,7 +7,12 @@ const MobileDropdown = ({ showingDropdown, setShowingDropdown }) => {
   return (
     <div
       onMouseLeave={() => setShowingDropdown(false)}
-      className="p-2 px-4 pl-8 text-white text-right items-end flex flex-col bg-panel border-2 border-t-0 border-accent rounded-b fixed z-50 right-0 mt-4 mr-3"
+      className="pl-8 px-2
+       text-white text-right
+       items-end flex flex-col 
+       bg-panel 
+       border-2 border-t-0 border-accent
+       rounded-b fixed z-50 right-0 mt-4 mr-2"
     >
       {[
         { name: "Home", path: "/" },

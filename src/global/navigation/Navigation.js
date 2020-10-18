@@ -11,8 +11,8 @@ import "./Navigation.css";
 const Navigation = () => {
   const [showingDropdown, setShowingDropdown] = useState(false);
   return (
-    <div className="flex flex-row sticky top-0 bg-background items-center justify-end w-full self-end ">
-      <div className="social-links lg:hidden flex flex-row border-accent border-b-2 items-center">
+    <div className="flex flex-row sticky-all top-0 bg-background items-center justify-end w-full self-end my-3">
+      <div className="social-links lg:hidden flex flex-row justify-center border-accent border-b-2 items-center">
         <a
           className="my-2 mr-12"
           href="https://www.linkedin.com/in/geoff-webb-85637586"
@@ -23,7 +23,7 @@ const Navigation = () => {
           <img className="icon" src={GitHub} />
         </a>
         <div
-          className="mobile-nav-button border-accent border rounded m-3"
+          className="mobile-nav-button border-accent border rounded mx-4 mb-3"
           onClick={() => setShowingDropdown(!showingDropdown)}
           onMouseOver={() => setShowingDropdown(true)}
         >

@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "yarn watch:css && webpack-dev-server --host 0.0.0.0 --config ./webpack.config.js --mode development",
+    "start": "npm run watch:css && webpack-dev-server --host 0.0.0.0 --config ./webpack.config.js --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "yarn build:css && webpack -p",
+    "build": "npm build:css && webpack -p",
     "build:css": "postcss styles/main.css -o assets/styles.css",
     "watch:css": "postcss styles/main.css -o assets/styles.css"
   },
@@ -44,6 +44,7 @@
     "bootstrap": "^4.5.0",
     "copy-webpack-plugin": "^6.0.2",
     "moment": "^2.27.0",
+    "postcss": "^8.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

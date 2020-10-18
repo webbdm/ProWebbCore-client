@@ -65,9 +65,9 @@ const Projects = () => (
             <img className="ml-2 mr-1" src={LinkIcon} />
             <Tags tags={project.tags} />
           </a>
-          <div className="py-1">
+          <div className="py-1 md:flex md:flex-row md:flex-nowrap">
             <img
-              className="mt-2 w-64 h-52 mr-4 mb-2 mt-1 rounded-sm object-cover float-left"
+              className="mt-2 sm:w-auto md:w-64 h-52 mr-4 mb-2 mt-1 rounded-sm object-cover"
               src={`${process.env.BUCKET_URL}/${project.image}`}
             />
             <p className="mt-1">

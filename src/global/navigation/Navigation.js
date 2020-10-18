@@ -11,18 +11,19 @@ import "./Navigation.css";
 const Navigation = () => {
   const [showingDropdown, setShowingDropdown] = useState(false);
   return (
-    <div className="flex flex-row sticky-all top-0 bg-background items-center justify-end w-full self-end my-3">
-      <div className="social-links lg:hidden flex flex-row justify-center border-accent border-b-2 items-center">
-        <a
-          className="my-2 mr-12"
-          href="https://www.linkedin.com/in/geoff-webb-85637586"
-        >
-          <img className="icon" src={LinkedIn} />
-        </a>
-        <a className="my-2 mr-8" href="https://github.com/webbdm">
-          <img className="icon" src={GitHub} />
-        </a>
-        <div
+    <div>
+      <div className="flex flex-row sticky-all top-0 bg-background items-center justify-end w-full self-end my-3">
+        <div className="social-links lg:hidden flex flex-row justify-center border-accent border-b-2 items-center">
+          <a
+            className="my-2 mr-12"
+            href="https://www.linkedin.com/in/geoff-webb-85637586"
+          >
+            <img className="icon" src={LinkedIn} />
+          </a>
+          <a className="my-2 mr-8" href="https://github.com/webbdm">
+            <img className="icon" src={GitHub} />
+          </a>
+          {/* <div
           className="mobile-nav-button border-accent border rounded mx-4 mb-3"
           onClick={() => setShowingDropdown(!showingDropdown)}
           onMouseOver={() => setShowingDropdown(true)}
@@ -42,23 +43,46 @@ const Navigation = () => {
             setShowingDropdown={setShowingDropdown}
             showingDropdown={showingDropdown}
           />
+        </div> */}
+        </div>
+        <div className="page-links py-2 text-white border-accent lg:flex xl:flex hidden border-b-2">
+          {[
+            { name: "Work", path: "/work" },
+            { name: "Projects", path: "/projects" },
+            { name: "About", path: "/about" },
+          ].map((link) => (
+            <NavLink
+              key={link.name}
+              className="text-xl mr-12"
+              activeStyle={{ fontWeight: "bold" }}
+              to={link.path}
+            >
+              {link.name}
+            </NavLink>
+          ))}
         </div>
       </div>
-      <div className="page-links py-2 text-white border-accent lg:flex xl:flex hidden border-b-2">
-        {[
-          { name: "Work", path: "/work" },
-          { name: "Projects", path: "/projects" },
-          { name: "About", path: "/about" },
-        ].map((link) => (
-          <NavLink
-            key={link.name}
-            className="text-xl mr-12"
-            activeStyle={{ fontWeight: "bold" }}
-            to={link.path}
-          >
-            {link.name}
-          </NavLink>
-        ))}
+      <div>
+        <div className="flex flex-row lg:hidden bg-panel mx-4 p-1 text-white justify-between items-center rounded">
+          {[
+            { name: "Home", path: "/" },
+            { name: "Work", path: "/work" },
+            { name: "Projects", path: "/projects" },
+            { name: "About", path: "/about" },
+          ].map((link) => {
+            return (
+              <NavLink
+                exact
+                key={link.name}
+                className="text-md py-2 w-full text-center"
+                activeStyle={{ fontWeight: "bold" }}
+                to={link.path}
+              >
+                {link.name}
+              </NavLink>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

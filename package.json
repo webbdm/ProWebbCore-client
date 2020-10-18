@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run watch:css && webpack-dev-server --host 0.0.0.0 --config ./webpack.config.js --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm build:css && webpack -p",
+    "build": "npm run build:css && webpack -p",
     "build:css": "postcss styles/main.css -o assets/styles.css",
     "watch:css": "postcss styles/main.css -o assets/styles.css"
   },

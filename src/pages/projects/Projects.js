@@ -62,10 +62,10 @@ const Projects = () => (
             className="mt-2 flex flex-row justify-start items-center border-b-2 border-accent"
           >
             <h2 className="text-2xl hover:text-accent">{project.name}</h2>
-            <img className="ml-2 mr-1" src={LinkIcon} />
+            <img className="ml-2 mr-1 mb-2 mt-3" src={LinkIcon} />
             <Tags tags={project.tags} />
           </a>
-          <div className="py-1 md:flex md:flex-row md:flex-nowrap">
+          <div className="py-1 mb-2 md:flex md:flex-row md:flex-nowrap">
             <img
               className="mt-2 sm:w-auto md:w-64 h-52 mr-4 mb-2 mt-1 rounded-sm object-cover"
               src={`${process.env.BUCKET_URL}/${project.image}`}

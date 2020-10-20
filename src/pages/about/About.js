@@ -32,10 +32,13 @@ const About = () => {
   return (
     <div className="mt-3 h-full d-flex flex-col flex-wrap align-items-center justify-content-around">
       <div className="px-4 pb-12">
-        <img
-          className="mr-2 mt-1 lg:h-56 sm:h-64 sm:w-auto sm:h-auto md:w-auto rounded md:float-left"
-          src={ProfilePhoto}
-        />
+        <div className="flex flex-col md:float-left mr-2 mt-0">
+          <img
+            className=" mt-1 lg:h-64 sm:h-56 sm:w-auto sm:h-auto md:w-auto rounded-t border-accent border-b-4"
+            src={ProfilePhoto}
+          />
+          <p className="bg-panel px-1 py-2 text-white w-full rounded-b text-center">Geoff Webb</p>
+        </div>
 
         <p className="my-4 px-0 text-white text-left">
           Born and raised in Wichita, Kansas, I grew up making trips out West
@@ -56,7 +59,7 @@ const About = () => {
           reality.
         </p>
       </div>
-      <div className="w-100 mt-20 mx-4 border-t-2 border-accent"></div>
+      <div className="w-100 mt-32 mx-4 border-t-2 border-accent"></div>
       <PhotoGrid
         data={[
           { label: "Backpacking through Tennessee", url: "scsp_2018.jpg" },

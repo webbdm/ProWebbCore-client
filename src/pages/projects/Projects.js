@@ -4,10 +4,10 @@ import { UserContext } from "../../Store";
 import LinkIcon from "../../../assets/link_icon.svg";
 
 const Tags = ({ tags }) => (
-  <div className="ml-2 flex flex-row">
+  <div className="ml-2 mb-1 flex flex-row flex-wrap">
     {tags.map((tag) => (
       <span
-        className="mx-2 px-2 p-1 align-bottom rounded bg-accent text-center text-primary text-xs"
+        className="mx-2 px-2 p-1 my-1 flex-grow align-bottom rounded bg-accent text-center text-primary text-xs"
         key={tag}
       >
         {tag}

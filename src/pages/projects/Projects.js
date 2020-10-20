@@ -6,12 +6,12 @@ import LinkIcon from "../../../assets/link_icon.svg";
 const Tags = ({ tags }) => (
   <div className="ml-2 flex flex-row">
     {tags.map((tag) => (
-      <div
-        className="mx-2 px-2 p-1 pt-0 rounded bg-accent text-center text-primary text-xs"
+      <span
+        className="mx-2 px-2 p-1 align-bottom rounded bg-accent text-center text-primary text-xs"
         key={tag}
       >
         {tag}
-      </div>
+      </span>
     ))}
   </div>
 );
@@ -22,7 +22,7 @@ const Projects = () => {
   if (!user) return null;
 
   return (
-    <div className="h-full flex flex-col m-4">
+    <div className="min-h-full flex flex-col m-4">
       <div className="bg-panel p-4 mb-2 rounded">
         <div className="flex flex-row items-center border-b-2 border-accent">
           <h2 className="text-white text-2xl">webbdm.net</h2>
@@ -35,7 +35,7 @@ const Projects = () => {
           Droplet with a MySQL database.
         </h2>
       </div>
-      <div className="flex flex-col justify-around">
+      <div className="flex flex-col justify-between">
         {user.projects.map((project) => (
           <div
             key={project.name}
@@ -49,7 +49,7 @@ const Projects = () => {
               <img className="ml-2 mr-1 mb-2 mt-3" src={LinkIcon} />
               {/* <Tags tags={project.tags} /> */}
             </a>
-            <div className="py-1 mb-2 md:flex md:flex-row md:flex-nowrap">
+            <div className="py-1 mb-2 md:flex md:flex-row md:flex-no-wrap">
               <img
                 className="mt-2 sm:w-auto md:w-64 h-52 mr-4 mb-2 mt-1 rounded-sm object-cover"
                 src={`${process.env.BUCKET_URL}/${project.image}`}

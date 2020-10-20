@@ -51,6 +51,7 @@ module.exports = {
       minify: false,
       // copys the content of the existing index.html to the new /build index.html
       template: path.resolve("./index.html"),
+      favicon: "./assets/favicon.ico",
     }),
     new webpack.DefinePlugin({
       "process.env.API_BASE_URL": JSON.stringify(process.env.API_BASE_URL),

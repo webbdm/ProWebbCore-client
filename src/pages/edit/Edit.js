@@ -15,12 +15,14 @@ const EditProject = ({ project, update }) => {
     projectApi.update(project.id, { ...project, name, description, image });
 
   return (
-    <div className="flex flex-row flex-wrap flex-nowrap justify-start my-4">
-      <img
-        className="h-32 mb-2 w-auto rounded-sm object-cover"
-        src={`${process.env.BUCKET_URL}/${image}`}
-      />
-      <div className="flex flex-col h-auto w-full sm:mt-2">
+    <div className="flex flex-row flex-wrap lg:flex-no-wrap items-start justify-between my-4">
+      <div className="lg:h-32 sm:h-64 mb-2 rounded">
+        <img
+          className="sm:w-auto md:w-64 h-52 mr-4 mb-2 rounded-sm object-cover"
+          src={`${process.env.BUCKET_URL}/${image}`}
+        />
+      </div>
+      <div className="flex flex-col h-auto w-full md:ml-4">
         <div className="flex flex-row justify-between bg-panel rounded-t border-accent border-b w-100">
           <input
             className="outline-none h-100 text-white bg-panel rounded-t focus:font-semibold cursor-pointer flex-grow p-2"
@@ -59,7 +61,7 @@ const Edit = () => {
 
   return (
     <div className="h-full w-100 flex flex-col m-4">
-      <div className="flex flex-row justify-between items-center border-accent border-b my-4 ml-0 pb-2">
+      <div className="flex flex-row flex-wrap lg:flex-no-wrap justify-between items-center border-accent border-b my-4 ml-0 pb-2">
         <h1 className="text-white text-2xl">Bio</h1>
         <div
           className="bg-panel rounded px-4 py-1 text-white cursor-pointer hover:border-accent hover:border"

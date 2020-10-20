@@ -37,7 +37,9 @@ const About = () => {
             className=" mt-1 lg:h-64 sm:h-56 sm:w-auto sm:h-auto md:w-auto rounded-t border-accent border-b-4"
             src={ProfilePhoto}
           />
-          <p className="bg-panel px-1 py-2 text-white w-full rounded-b text-center">Geoff Webb</p>
+          <p className="bg-panel px-1 py-2 text-white w-full rounded-b text-center">
+            Geoff Webb
+          </p>
         </div>
 
         <p className="my-4 px-0 text-white text-left">
@@ -57,7 +59,7 @@ const About = () => {
           incredible years into software development, I'm still always waking up
           each day looking forward to the next tech idea that I can make a
           reality.
-        </p>//
+        </p>
       </div>
       <div className="w-100 mt-32 mx-4 border-t-2 border-accent"></div>
       <PhotoGrid

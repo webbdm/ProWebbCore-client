@@ -57,7 +57,7 @@ const About = () => {
           incredible years into software development, I'm still always waking up
           each day looking forward to the next tech idea that I can make a
           reality.
-        </p>
+        </p>//
       </div>
       <div className="w-100 mt-32 mx-4 border-t-2 border-accent"></div>
       <PhotoGrid

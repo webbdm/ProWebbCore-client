@@ -49,11 +49,13 @@ const EditProject = ({ project, update }) => {
 const Edit = () => {
   const [user] = useContext(UserContext);
 
-  // For future use
-  const [bio, setBio] = useState("");
+  const [bio, setBio] = useState(user.bio);
   const [image, setImage] = useState("");
+  const saveUser = () => userApi.update(user.id, { ...user, bio });
 
-  const saveUser = () => userApi.update(user.id, { ...user });
+  useEffect(() => {
+    setBio(user.bio);
+  }, [user.bio]);
 
   if (!process.env.WRITE_ACCESS) return null;
 
@@ -65,7 +67,7 @@ const Edit = () => {
         <h1 className="text-white text-2xl">Bio</h1>
         <div
           className="bg-panel rounded px-4 py-1 text-white cursor-pointer hover:border-accent hover:border"
-          onClick={() => saveUser(user.id, {})}
+          onClick={() => saveUser()}
         >
           Save
         </div>
@@ -76,9 +78,9 @@ const Edit = () => {
           src={ProfilePhoto}
         />
         <textarea
-          value="This is where the about page description goes"
+          value={bio}
           className="bg-panel p-2 flex-grow text-white lg:ml-4 resize-none focus:font-semibold rounded outline-none"
-          onChange={() => {}}
+          onChange={(e) => setBio(e.target.value)}
         ></textarea>
       </div>
 

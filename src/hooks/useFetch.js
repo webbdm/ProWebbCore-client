@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
-export const useFetch = (apiCall) => {
-  const [data, setData] = useState(null);
+export const useFetch = (apiCall, initialState) => {
+  const [data, setData] = useState(initialState);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

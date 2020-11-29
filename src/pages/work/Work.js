@@ -8,7 +8,7 @@ import "./Work.sass";
 const Work = () => {
   const [user] = useContext(UserContext);
 
-  if (!user) return <h1>Loading...</h1>;
+  if (!user || !user.resumes) return <h1>Loading...</h1>;
 
   return (
     <div className="flex flex-row justify-center">

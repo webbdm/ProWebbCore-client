@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import moment from "moment";
 
 import LaravelIcon from "../../../../assets/laravel_logo.svg";
+import LinuxIcon from "../../../../assets/linux_logo.svg";
 import NodeIcon from "../../../../assets/node_logo.svg";
 import ReactIcon from "../../../../assets/react_logo.svg";
 import PHPIcon from "../../../../assets/php_logo.svg";
@@ -24,6 +25,8 @@ const mapSkillImages = (name) => {
       return PHPIcon;
     case "Laravel":
       return LaravelIcon;
+    case "Ubuntu/Linux":
+      return LinuxIcon;
     default:
       break;
   }
@@ -71,7 +74,8 @@ const Resume = ({ name, resumes }) => {
       {/* <div className="user-wrapper"> */}
       <div className="user-panel flex-shrink text-white bg-panel rounded-md m-2">
         <img
-          className="border-accent rounded-t-md border-b-2"
+          //className="border-accent rounded-t-md border-b-2"
+          className="m-0 h-auto w-full rounded-t object-cover border-accent border-b-2"
           src={ProfileImage}
         />
         <h1 className="user-name text-5xl px-2 text-center text-white">
@@ -116,5 +120,6 @@ const Resume = ({ name, resumes }) => {
     </div>
   );
 };
+
 
 export default Resume;

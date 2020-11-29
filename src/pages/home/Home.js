@@ -7,7 +7,7 @@ import GitHub from "../../../assets/github_logo.png";
 import "./Home.sass";
 
 const MainLogo = () => (
-  <div className="rounded border border-accent px-2">
+  <div className="rounded border-2 border-accent px-2">
     <span className="text-white text-6xl">WEB</span>
     <span className="text-accent text-6xl">B</span>
   </div>

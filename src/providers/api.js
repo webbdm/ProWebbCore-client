@@ -6,7 +6,7 @@ const API_BASE_URL = `${process.env.API_BASE_URL}`; //
 export const userApi = {
   getUser: async (id) => await axios.get(`${API_BASE_URL}/user/${id}`),
   update: async (id, update) =>
-    await axios.get(`${API_BASE_URL}/user/${id}`, update),
+    await axios.put(`${API_BASE_URL}/user/${id}`, update),
 };
 
 export const projectApi = {

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+
 import { UserContext } from "../../Store";
 
 import { projectApi, userApi } from "../../providers/api.js";
@@ -57,7 +58,7 @@ const Edit = () => {
     setBio(user.bio);
   }, [user.bio]);
 
-  if (!process.env.WRITE_ACCESS) return null;
+  //if (!process.env.WRITE_ACCESS) return null;
 
   if (!user) return null;
 

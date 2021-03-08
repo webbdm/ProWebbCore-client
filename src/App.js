@@ -10,6 +10,7 @@ import Page from "./global/Page.js";
 import Projects from "./pages/projects/Projects.js";
 
 import "../assets/styles.css";
+import AuthRoute from "./global/auth/AuthRoute.js";
 
 const App = () => (
   <div className="h-full bg-background">
@@ -35,7 +36,9 @@ const App = () => (
         </Route>
 
         <Route path="/edit">
-          <Page component={Edit} />
+          <AuthRoute>
+            <Page component={Edit} />
+          </AuthRoute>
         </Route>
       </Switch>
     </Router>

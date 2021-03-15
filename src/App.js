@@ -27,12 +27,12 @@ const App = () => (
           <Page component={Work} />
         </Route>
 
-        <Route path="/contact">
-          <Page component={Contact} />
-        </Route>
-
         <Route path="/projects">
           <Page component={Projects} />
+        </Route>
+
+        <Route path="/contact">
+          <Page component={Contact} />
         </Route>
 
         <Route path="/edit">

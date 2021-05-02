@@ -48,7 +48,7 @@ const Job = ({ job }) => {
               <span>{moment(endDate).format("MMM YYYY")}</span>
             </React.Fragment>
           ) : (
-            <div>gwebb@atiba.com</div>
+            <div>April 2021 - present</div>
           )}
         </span>
       </div>
@@ -82,14 +82,14 @@ const Resume = ({ name, resumes }) => {
           {name}
         </h1>
         <p className="user-tagline my-2 px-2">
-          Software Developer at Atiba with a passion for solving puzzles
+          Visually-minded software engineer with a passion for Clean Code and solving puzzles
         </p>
         <div className="user-education-panel p-2">
           <div className="user-education-school">
             <h3 className="text-white text-xl font-bold flex flex-row justify-between border-accent border-b-2">
               Nashville Software School <span>2017</span>
             </h3>
-            <p>Full Stack Web Development</p>
+            <p>Fullstack Web Development</p>
           </div>
           <div className="user-education-school">
             <h3 className="text-white text-xl font-bold flex flex-row justify-between items-center border-accent border-b-2">

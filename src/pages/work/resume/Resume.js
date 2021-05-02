@@ -82,7 +82,7 @@ const Resume = ({ name, resumes }) => {
           {name}
         </h1>
         <p className="user-tagline my-2 px-2">
-          Visually-minded software engineer with a passion for Clean Code and solving puzzles
+          Software Engineer
         </p>
         <div className="user-education-panel p-2">
           <div className="user-education-school">

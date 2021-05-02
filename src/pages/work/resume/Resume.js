@@ -53,7 +53,7 @@ const Job = ({ job }) => {
         </span>
       </div>
       <p className="job-title mb-4 my-1">{title}</p>
-      <p className="job-description">{description}</p>
+      <p className="job-description text-sm">{description}</p>
     </div>
   );
 };
@@ -81,8 +81,8 @@ const Resume = ({ name, resumes }) => {
         <h1 className="user-name text-5xl px-2 text-center text-white">
           {name}
         </h1>
-        <p className="user-tagline my-2 px-2">
-          Software Engineer
+        <p className="text-center user-tagline my-2 px-2">
+          Software Engineer with a passion for solving puzzles
         </p>
         <div className="user-education-panel p-2">
           <div className="user-education-school">

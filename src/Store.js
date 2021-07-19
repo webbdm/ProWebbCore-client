@@ -12,7 +12,7 @@ const Store = ({ children }) => {
     projects: [],
   }); // TODO: Add auth. Temporarily just use 1 because I'm the only User in the db
 
-  const { data } = useFetch(async () => await userApi.getUser(1), user);;
+  const { data } = useFetch(async () => await userApi.getUser(1), user);
 
   useEffect(() => {
     setUser(data); // // TODO: Add auth. Temporarily just use 1 because I'm the only User in the db;

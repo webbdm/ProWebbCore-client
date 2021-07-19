@@ -25,3 +25,8 @@ export const projectApi = {
   update: async (id, update) =>
     await axios.put(`${API_BASE_URL}/projects/${id}`, update),
 };
+
+export const lifeApi = {
+  getMeals: async () =>
+    await axios.get(`${API_BASE_URL}/meal`),
+};

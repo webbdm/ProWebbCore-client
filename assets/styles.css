@@ -24205,6 +24205,10 @@ body {
   width: 25px;
 }
 
+.macro-item{
+  min-width: 60%;
+}
+
 .sticky-all {
   position: -webkit-sticky;
   position: -moz-sticky;

@@ -2,13 +2,14 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import About from "./pages/about/About.js";
-import Edit from "./pages/edit/Edit.js";
-import Life from "./pages/life/Life.js";
-import Work from "./pages/work/Work.js";
 import Contact from "./pages/contact/Contact.js";
+import Edit from "./pages/edit/Edit.js";
 import Home from "./pages/home/Home.js";
+import Life from "./pages/life/Life.js";
+import Nutrition from "./pages/nutrition/Nutrition.js";
 import Page from "./global/Page.js";
 import Projects from "./pages/projects/Projects.js";
+import Work from "./pages/work/Work.js";
 
 import "../assets/styles.css";
 import AuthRoute from "./global/auth/AuthRoute.js";
@@ -23,6 +24,9 @@ const App = () => (
 
         <Route path="/life">
           <Life />
+        </Route>
+        <Route path="/nutrition">
+          <Nutrition />
         </Route>
         <Route path="/about">
           <Page component={About} />

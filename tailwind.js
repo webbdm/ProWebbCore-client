@@ -16,6 +16,7 @@ module.exports = {
       current: "currentColor",
 
       panel: "#1f4178",
+      paneltp: "rgba(31, 65, 120,.50)",
       background: "#1a1a54",
       primary: "#1a1a54",
       accent: "#1fc1d6",

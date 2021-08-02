@@ -2,6 +2,7 @@ import React from "react";
 import { useFetch } from "../../hooks/useFetch.js";
 import { lifeApi } from "../../providers/api";
 import PWCLogos from "../../../assets/PWC Logos.svg";
+import { NavLink } from "react-router-dom";
 
 const Life = () => {
     //const { data } = useFetch(async () => await lifeApi.getMeals());
@@ -33,7 +34,7 @@ const Life = () => {
                                 Dinner Party - 5:30pm
                                 123 Road Drive Lane
                                 </p> */}
-                                <p className="absolute bottom-0 left-0 m-1 p-1 rounded-lg bg-paneltp">Upcoming</p>
+                            <p className="absolute bottom-0 left-0 m-1 p-1 rounded-lg bg-paneltp">Upcoming</p>
                         </React.Fragment>
                     </div>
                 </div>
@@ -41,14 +42,16 @@ const Life = () => {
             <div className="p-6 pb-0 h-screen grid lg:grid-rows-3 gap-8 col-span-3 bg-background">
                 {tiles.map(item => <div style={{ height: '200px' }} className="cursor-pointer relative shadow-2xl flex-grow flex flex-row text-white rounded-lg m-2 bg-panel" key={item}>
                     <React.Fragment>
-                        <div className="backdrop-filter backdrop-blur-sm flex flex-col justify-center text-center w-32 bg-paneltp absolute h-full rounded-l-lg p-4">
-                            <img src={PWCLogos} />
-                            <h1 className="mt-2">{item}</h1>
-                        </div>
-                        <img
-                            className="rounded-lg border-l border-panel object-cover h-full w-full border-accent"
-                            src={`${process.env.BUCKET_URL}/${item}`}
-                        />
+                        <NavLink to={`/${item}`}>
+                            <div className="backdrop-filter backdrop-blur-sm flex flex-col justify-center text-center w-32 bg-paneltp absolute h-full rounded-l-lg p-4">
+                                <img src={PWCLogos} />
+                                <h1 className="mt-2">{item}</h1>
+                            </div>
+                            <img
+                                className="rounded-lg border-l border-panel object-cover h-full w-full border-accent"
+                                src={`${process.env.BUCKET_URL}/${item}`}
+                            />
+                        </NavLink>
                         {/* <span className="bg-opacity-50 bg-panel p-1 rounded absolute inline-block bottom-0 ml-40 mb-2 text-black">{item}</span> */}
                     </React.Fragment>
                 </div>)}

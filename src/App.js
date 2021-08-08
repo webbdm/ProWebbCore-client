@@ -15,7 +15,7 @@ import "../assets/styles.css";
 import AuthRoute from "./global/auth/AuthRoute.js";
 
 const App = () => (
-  <div className="h-full bg-background">
+  <div className="app-wrapper h-full bg-background">
     <Router>
       <Switch>
         <Route exact path="/">

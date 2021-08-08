@@ -24,7 +24,7 @@ const Nutrition = () => {
         protein: 6,
         carbs: 2,
         fat: 20,
-        calories: 100
+        calories: 100,
     },
     {
         food_name: "Salmon",
@@ -101,7 +101,7 @@ const Nutrition = () => {
                         <Foods foods={foods} />
                     </Route>
                     <Route exact path="/nutrition/meals">
-                        <Meals meals={meals} />
+                        <Meals foods={foods} meals={meals} />
                     </Route>
                     <Route exact path="/nutrition/goals">
                         <Goals />

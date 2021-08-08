@@ -15,7 +15,16 @@ body {
   margin: 0;
   padding: 0;
   background-color: #1a1a54;
-  font-family: 'Lexend Deca', sans-serif;
+  /* font-family: 'Lexend Deca', sans-serif; */
+}
+
+.logo-font {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 6rem;
+}
+
+.life-module{ 
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji" !important;
 }
 
 .icon {

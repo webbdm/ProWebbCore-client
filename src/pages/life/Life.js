@@ -9,7 +9,8 @@ const Life = () => {
 
     const tiles = ['Nutrition', 'Calendar', 'Organization'];
     return (
-        <div className="h-screen 
+        <div className="life-module
+                        h-screen 
                         grid 
                         xs:h-1/2 
                         sm:h-1/2 
@@ -54,7 +55,7 @@ const Life = () => {
                         </NavLink>
                         {/* <span className="bg-opacity-50 bg-panel p-1 rounded absolute inline-block bottom-0 ml-40 mb-2 text-black">{item}</span> */}
                     </React.Fragment>
-                </div>)}
+                </div>)} 
             </div>
             {/* <div>{data && data.length > 0 && data.map(meal => <div key={meal.id} className="text-white">{meal.name}</div>)}</div> */}
         </div>

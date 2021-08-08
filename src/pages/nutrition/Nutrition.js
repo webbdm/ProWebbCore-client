@@ -1,7 +1,12 @@
 import React from "react";
+import Foods from "./foods/Foods";
+import Goals from "./goals/Goals";
+import Meals from "./meals/Meals";
 import { useFetch } from "../../hooks/useFetch.js";
 import { lifeApi } from "../../providers/api";
+import { Route, Switch } from "react-router-dom";
 import PWCLogos from "../../../assets/PWC Logos.svg";
+import { NavLink } from "react-router-dom";
 
 const Nutrition = () => {
     //const { data } = useFetch(async () => await lifeApi.getMeals());
@@ -11,10 +16,47 @@ const Nutrition = () => {
         { goal_macro_id: 2, macro_id: "Fat", target_amount: 200, remaining_amount: 50 },
         { goal_macro_id: 3, macro_id: "Carbohydrates", target_amount: 200, remaining_amount: 50 }
     ];
+
+    const foods = [{
+        food_name: "Mixed Nuts",
+        brand_name: "Kirkland",
+        serving_size: "0.5 cup",
+        protein: 6,
+        carbs: 2,
+        fat: 20,
+        calories: 100
+    },
+    {
+        food_name: "Salmon",
+        brand_name: "Kirkland",
+        serving_size: "8 oz",
+        protein: 37,
+        carbs: 2,
+        fat: 20,
+        calories: 220
+    },
+    {
+        food_name: "Machine Whey",
+        brand_name: "MTS",
+        serving_size: "1 scoop",
+        protein: 52,
+        carbs: 2,
+        fat: 20,
+        calories: 150
+    },
+    ];
+
     const titles = [
-        {title_name: "Meals",img_url: "https://prowebbcore-client.s3.amazonaws.com/Meals"},
-        {title_name: "Goals",img_url: "https://prowebbcore-client.s3.amazonaws.com/Goals"},
-        {title_name: "Foods",img_url: "https://prowebbcore-client.s3.amazonaws.com/Foods"},
+        { title_name: "Meals", img_url: "https://prowebbcore-client.s3.amazonaws.com/Meals", path: "meals" },
+        { title_name: "Goals", img_url: "https://prowebbcore-client.s3.amazonaws.com/Goals", path: "goals" },
+        { title_name: "Foods", img_url: "https://prowebbcore-client.s3.amazonaws.com/Foods", path: "foods" },
+    ];
+
+    const meals = [
+        { name: "Breakfast", foods: foods },
+        { name: "Lunch", foods: foods },
+        { name: "Dinner", foods: foods },
+        { name: "Snacks", foods: foods }
     ];
     return (
         <div className="h-screen">
@@ -37,19 +79,34 @@ const Nutrition = () => {
                 </div>
             </div>
             <div>
-            {titles.map(title => <div style={{ height: '200px' }} className="cursor-pointer relative shadow-2xl flex-grow flex flex-row text-white rounded-lg md:m-6 m-3 bg-panel" key={title.title_name}>
-                    <React.Fragment>
-                        <div className="backdrop-filter backdrop-blur-sm flex flex-col justify-center text-center w-32 bg-paneltp absolute h-full rounded-l-lg p-4">
-                            <img src={PWCLogos} />
-                            <h1 className="mt-2">{title.title_name}</h1>
-                        </div>
-                        <img
-                            className="rounded-lg border-l border-panel object-cover h-full w-full border-accent"
-                            src={`${process.env.BUCKET_URL}/${title.title_name}`}
-                        />
-                        {/* <span className="bg-opacity-50 bg-panel p-1 rounded absolute inline-block bottom-0 ml-40 mb-2 text-black">{item}</span> */}
-                    </React.Fragment>
-                </div>)}
+                <Switch>
+                    <Route exact path="/Nutrition">
+                        {titles.map(title =>
+                            <NavLink to={`/Nutrition/${title.path}`}><div style={{ height: '200px' }} className="cursor-pointer relative shadow-2xl flex-grow flex flex-row text-white rounded-lg md:m-6 m-3 bg-panel" key={title.title_name}>
+                                <React.Fragment>
+                                    <div className="backdrop-filter backdrop-blur-sm flex flex-col justify-center text-center w-32 bg-paneltp absolute h-full rounded-l-lg p-4">
+                                        <img src={PWCLogos} />
+                                        <h1 className="mt-2">{title.title_name}</h1>
+                                    </div>
+                                    <img
+                                        className="rounded-lg border-l border-panel object-cover h-full w-full border-accent"
+                                        src={`${process.env.BUCKET_URL}/${title.title_name}`}
+                                    />
+                                    {/* <span className="bg-opacity-50 bg-panel p-1 rounded absolute inline-block bottom-0 ml-40 mb-2 text-black">{item}</span> */}
+                                </React.Fragment>
+                            </div>
+                            </NavLink>)}
+                    </Route>
+                    <Route exact path="/nutrition/foods">
+                        <Foods foods={foods} />
+                    </Route>
+                    <Route exact path="/nutrition/meals">
+                        <Meals meals={meals} />
+                    </Route>
+                    <Route exact path="/nutrition/goals">
+                        <Goals />
+                    </Route>
+                </Switch>
             </div>
             {/* <div>{data && data.length > 0 && data.map(meal => <div key={meal.id} className="text-white">{meal.name}</div>)}</div> */}
         </div>

@@ -45,6 +45,9 @@ const Home = () => (
         <Link className="border-accent border-b-2 mx-8 mb-4" to="/projects">
           PROJECTS
         </Link>
+        <Link className="border-accent yay border-b-2 mx-8 mb-4" to="/designs">
+          DESIGNS
+        </Link>
       </div>
     </div>
   </div>

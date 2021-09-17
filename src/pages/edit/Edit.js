@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 
 import { UserContext } from "../../Store";
 
-import { projectApi, userApi } from "../../providers/api.js";
+import { projectApi, userApi, fileApi } from "../../providers/api.js";
 
 import ProfilePhoto from "../../../assets/gwebb_profile.jpg";
 
@@ -52,7 +52,19 @@ const Edit = () => {
 
   const [bio, setBio] = useState(user.bio);
   const [image, setImage] = useState("");
+  const [designFile, setDesignFile] = useState("");
+
   const saveUser = () => userApi.update(user.id, { ...user, bio });
+
+  const uploadFile = () => {
+    const formData = new FormData();
+    formData.append(
+      "formFiles",
+      designFile,
+      designFile.name
+    );
+    fileApi.upload(formData, 'designFile');
+  };
 
   useEffect(() => {
     setBio(user.bio);
@@ -75,18 +87,28 @@ const Edit = () => {
       </div>
       <div className="flex flex-row flex-wrap justify-start mb-2">
         <img
-          className="lg:h-64 sm:h-56 sm:w-auto sm:h-auto md:w-auto rounded-t border-accent border-b-4"
+          className="lg:h-64 sm:h-56 sm:w-auto sm:h-auto md:w-auto rounded-t-md border-accent border-b-4"
           src={ProfilePhoto}
         />
         <textarea
           value={bio}
-          className="bg-panel p-2 flex-grow text-white lg:ml-4 resize-none focus:font-semibold rounded outline-none"
+          className="bg-panel p-2 flex-1 text-white lg:ml-4 resize-none focus:font-semibold rounded-t-md outline-none"
           onChange={(e) => setBio(e.target.value)}
         ></textarea>
       </div>
 
       <div className="flex flex-row justify-between items-center border-accent border-b my-4 ml-0 pb-2">
         <h1 className="text-white text-2xl m-0">Projects</h1>
+      </div>
+
+      <div className="flex flex-col justify-between items-start border-accent border-b my-4 ml-0 pb-2">
+        <h1 className="text-white text-2xl m-0">Designs</h1>
+        <div className="flex flex-row">
+          <div>
+            <input type="file" onChange={e => setDesignFile(e.target.files[0])} />
+            <button onClick={() => uploadFile()}>Create</button>
+          </div>
+        </div>
       </div>
 
       <div className="flex flex-col w-full">

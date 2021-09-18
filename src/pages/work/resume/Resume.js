@@ -75,7 +75,7 @@ const Resume = ({ name, resumes }) => {
       <div className="user-panel flex-shrink text-white bg-panel rounded-md m-2">
         <img
           //className="border-accent rounded-t-md border-b-2"
-          className="m-0 h-auto w-full rounded-t object-cover border-accent border-b-2"
+          className="m-0 h-auto w-full rounded-t-md object-cover border-accent border-b-2"
           src={ProfileImage}
         />
         <h1 className="user-name text-5xl px-2 text-center text-white">

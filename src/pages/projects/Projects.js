@@ -23,7 +23,7 @@ const Projects = () => {
 
   return (
     <div className="min-h-full flex flex-col m-4">
-      <div className="bg-panel p-4 mb-2 rounded">
+      <div className="bg-panel p-4 mb-2 rounded-md">
         <div className="flex flex-row items-center border-b-2 border-accent">
           <h2 className="text-white text-2xl">webbdm.net</h2>
           <Tags tags={["react", ".net", "S3", "nginx", "mysql"]} />

@@ -12,7 +12,7 @@ const Sidebar = () => (
   >
     <div className="sticky top-0 flex flex-col items-center h-100 w-full">
       <Link to="/">
-        <div className="rounded border-2 border-accent px-2 mt-4 text-center">
+        <div className="rounded-sm border-2 border-accent px-2 mt-4 text-center">
           <span className="text-white inline-block text-4xl m-1">W</span>
         </div>
       </Link>

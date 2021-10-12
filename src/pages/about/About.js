@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../Store";
 
-import ProfilePhoto from "../../../assets/gwebb_profile.jpg";
+import ProfilePhoto from "../../../assets/profile.png";
 
 const PhotoGrid = ({ data }) => {
   return (
@@ -15,7 +15,7 @@ const PhotoGrid = ({ data }) => {
             className="m-0 sm:h-auto lg:h-56 w-full rounded-t-md object-cover border-accent border-b-2"
             src={`${process.env.BUCKET_URL}/${image.url}`}
           />
-          <p className="bg-panel px-1 py-2 text-white w-full rounded-b text-center">
+          <p className="bg-panel px-1 py-2 text-white w-full rounded-b-md text-center">
             {image.label}
           </p>
         </div>

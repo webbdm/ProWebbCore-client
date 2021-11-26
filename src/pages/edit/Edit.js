@@ -25,6 +25,11 @@ const Edit = () => {
     setCurrentProject(project)
   }
 
+  const closeModal = () => {
+    setIsShowingModal(false);
+    setCurrentProject(null);
+  };
+
   //if (!process.env.WRITE_ACCESS) return null;
 
   if (!user) return null;
@@ -56,6 +61,7 @@ const Edit = () => {
         <ProjectOrDesign
           currentProject={currentProject}
           initModal={initModal}
+          closeModal={closeModal}
           isShowingModal={isShowingModal}
           setIsShowingModal={setIsShowingModal}
           projects={user.projects}
@@ -64,6 +70,7 @@ const Edit = () => {
         <ProjectOrDesign
           currentProject={currentProject}
           initModal={initModal}
+          closeModal={closeModal}
           isShowingModal={isShowingModal}
           setIsShowingModal={setIsShowingModal}
           projects={user.projects}

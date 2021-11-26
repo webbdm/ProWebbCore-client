@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import { projectApi, fileApi } from "../../providers/api.js";
 
-const EditProject = ({ project, update }) => {
-    const [name, setName] = useState(project.name);
-    const [description, setDescription] = useState(project.description);
+const EditProject = ({ project, update, closeModal }) => {
+    const checkProject = project => {
+        return project ? project :
+            {
+                id: 0,
+                name: "",
+                description: "",
+                image: ""
+            }
+    }
+    const { id: projectId, name: projectName, description: projectDescription, image: projectImage } = checkProject(project);
+    const [name, setName] = useState(projectName);
+    const [description, setDescription] = useState(projectDescription);
     const [designFile, setDesignFile] = useState("");
-    const [image, setImage] = useState(project.image);
+    const [image, setImage] = useState(projectImage);
     const [preview, setPreview] = useState("");
 
     const setAndPreview = file => {
@@ -32,6 +42,7 @@ const EditProject = ({ project, update }) => {
         // Create ImageUploads table
         // ID, EntityType, EntityID, FileName
         projectApi.update(project.id, { ...project, name, description, image });
+        closeModal();
     }
 
     return (
@@ -44,13 +55,13 @@ const EditProject = ({ project, update }) => {
                     className="outline-none h-100 w-full text-white bg-panel rounded-t-md focus:font-semibold cursor-pointer flex-grow p-2"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Enter project name"
+                    placeholder={`${!projectId ? 'Add a' : 'Enter'} project name`}
                 />
             </div>
             <div className="bg-primary flex flex-col justify-start w-full">
                 {/* <label className="pl-2 pt-2 text-white">Description: </label> */}
                 <textarea
-                    placeholder="Enter description"
+                    placeholder={`${!projectId ? 'Add a' : 'Enter'} description`}
                     className="bg-primary text-white h-40 w-full outline-none focus:font-semibold resize-none p-2"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}

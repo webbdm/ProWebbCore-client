@@ -14,6 +14,7 @@ const MODAL_STYLES = {
 const ProjectOrDesign = ({
     currentProject,
     initModal,
+    closeModal,
     isShowingModal,
     isProjectType,     // Prop isProjectType denotes whether it's a Project or Design
     projects,
@@ -39,10 +40,10 @@ const ProjectOrDesign = ({
                 ))}
             </div>
 
-            <Modal isOpen={isShowingModal} onClose={() => setIsShowingModal(false)}>
+            <Modal isOpen={isShowingModal} onClose={() => closeModal()}>
                 <div style={MODAL_STYLES} className="flex flex-col filter drop-shadow-2xl rounded-lg bg-panel">
-                    <EditProject project={currentProject} />
-                    <div onClick={() => setIsShowingModal(false)} className="text-bg rounded-bl-lg rounded-br-lg bg-accent font-bold text-center cursor-pointer">X Close</div>
+                    <EditProject project={currentProject} closeModal={closeModal} />
+                    <div onClick={() => closeModal()} className="text-bg rounded-bl-lg rounded-br-lg bg-accent font-bold text-center cursor-pointer">X Close</div>
                 </div>
             </Modal>
         </React.Fragment>

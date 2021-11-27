@@ -8,14 +8,17 @@ const EditProject = ({ project, update, closeModal }) => {
                 id: 0,
                 name: "",
                 description: "",
-                image: ""
+                image: "",
+                userId: 1,
+                type: 'project'
             }
     }
-    const { id: projectId, name: projectName, description: projectDescription, image: projectImage } = checkProject(project);
+    const { type: projectType, userId, id, name: projectName, description: projectDescription, image: projectImage } = checkProject(project);
     const [name, setName] = useState(projectName);
     const [description, setDescription] = useState(projectDescription);
     const [designFile, setDesignFile] = useState("");
     const [image, setImage] = useState(projectImage);
+    const [isDesign, setIsDesign] = useState(projectType === 'design' ? true : false);
     const [preview, setPreview] = useState("");
 
     const setAndPreview = file => {
@@ -34,6 +37,7 @@ const EditProject = ({ project, update, closeModal }) => {
             designFile.name
         );
         fileApi.upload(formData, 'designFile'); // TODO: Add ImageUploads table inputs EntityType, EntityID
+        setImage(designFile.name);
     };
 
     const saveProject = () => {
@@ -41,9 +45,13 @@ const EditProject = ({ project, update, closeModal }) => {
         // TODO
         // Create ImageUploads table
         // ID, EntityType, EntityID, FileName
-        projectApi.update(project.id, { ...project, name, description, image });
+        id < 1
+            ? projectApi.create({ ...project, name, description, image: designFile.name, userId, type: getProjectType() })
+            : projectApi.update(id, { ...project, name, description, image, userId, type: getProjectType() });
         closeModal();
     }
+
+    const getProjectType = () => isDesign ? 'design' : 'project';
 
     return (
         <div className="flex flex-col flex-wrap lg:flex-no-wrap items-center">
@@ -55,13 +63,18 @@ const EditProject = ({ project, update, closeModal }) => {
                     className="outline-none h-100 w-full text-white bg-panel rounded-t-md focus:font-semibold cursor-pointer flex-grow p-2"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder={`${!projectId ? 'Add a' : 'Enter'} project name`}
+                    placeholder={`${!id ? 'Add a' : 'Enter'} project name`}
                 />
+                <label className="mx-6 flex flex-row items-center text-white">
+                    <span className="mx-4">Design</span>
+                    <input type="checkbox" checked={isDesign} onChange={e => setIsDesign(e.target.checked)} />
+                </label>
+
             </div>
             <div className="bg-primary flex flex-col justify-start w-full">
                 {/* <label className="pl-2 pt-2 text-white">Description: </label> */}
                 <textarea
-                    placeholder={`${!projectId ? 'Add a' : 'Enter'} description`}
+                    placeholder={`${!id ? 'Add a' : 'Enter'} description`}
                     className="bg-primary text-white h-40 w-full outline-none focus:font-semibold resize-none p-2"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}

@@ -23,8 +23,12 @@ export const userApi = {
 };
 
 export const projectApi = {
-  update: async (id, update) =>
-    await axios.put(`${API_BASE_URL}/projects/${id}`, update),
+  create: async (project) => {
+    return await axios.post(`${API_BASE_URL}/projects`, project);
+  },
+  update: async (id, update) => {
+    return await axios.put(`${API_BASE_URL}/projects/${id}`, update)
+  }
 };
 
 export const fileApi = {

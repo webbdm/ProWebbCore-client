@@ -42,7 +42,7 @@ const ProjectOrDesign = ({
 
             <Modal isOpen={isShowingModal} onClose={() => closeModal()}>
                 <div style={MODAL_STYLES} className="flex flex-col filter drop-shadow-2xl rounded-lg bg-panel">
-                    <EditProject project={currentProject} closeModal={closeModal} />
+                    <EditProject projectType={isProjectType ? 'project' : 'design'} project={currentProject} closeModal={closeModal} />
                     <div onClick={() => closeModal()} className="text-bg rounded-bl-lg rounded-br-lg bg-accent font-bold text-center cursor-pointer">X Close</div>
                 </div>
             </Modal>

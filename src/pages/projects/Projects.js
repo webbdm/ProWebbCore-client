@@ -18,7 +18,6 @@ const Tags = ({ tags }) => (
 
 const Projects = () => {
   const [user] = useContext(UserContext);
-
   if (!user) return null;
 
   return (
@@ -36,7 +35,7 @@ const Projects = () => {
         </h2>
       </div>
       <div className="flex flex-col justify-between">
-        {user.projects.map((project) => (
+        {user.projects.filter(p => p.type === 'project').map((project) => (
           <div
             key={project.name}
             className="flex flex-col flex-shrink-0 text-white"

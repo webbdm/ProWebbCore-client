@@ -13,7 +13,6 @@ import Projects from "./pages/projects/Projects.js";
 import Work from "./pages/work/Work.js";
 
 import "../assets/styles.css";
-import AuthRoute from "./global/auth/AuthRoute.js";
 
 const App = () => (
   <div className="app-wrapper h-full bg-background">
@@ -50,9 +49,7 @@ const App = () => (
         </Route>
 
         <Route path="/edit">
-          <AuthRoute>
-            <Page component={Edit} />
-          </AuthRoute>
+          <Page component={Edit} />
         </Route>
       </Switch>
     </Router>

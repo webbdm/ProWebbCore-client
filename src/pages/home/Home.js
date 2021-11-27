@@ -7,9 +7,9 @@ import GitHub from "../../../assets/github_logo.png";
 import "./Home.sass";
 
 const MainLogo = () => (
-  <div className="rounded border-2 border-accent px-2">
-    <span className="text-white text-6xl">WEB</span>
-    <span className="text-accent text-6xl">B</span>
+  <div className="logo-font rounded-md border-4 border-accent px-2">
+    <span className="text-white">WEB</span>
+    <span className="text-accent">B</span>
   </div>
 );
 
@@ -44,6 +44,9 @@ const Home = () => (
         </Link>
         <Link className="border-accent border-b-2 mx-8 mb-4" to="/projects">
           PROJECTS
+        </Link>
+        <Link className="border-accent yay border-b-2 mx-8 mb-4" to="/designs">
+          DESIGNS
         </Link>
       </div>
     </div>

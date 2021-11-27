@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import About from "./pages/about/About.js";
 import Contact from "./pages/contact/Contact.js";
+import Designs from "./pages/designs/Designs.js";
 import Edit from "./pages/edit/Edit.js";
 import Home from "./pages/home/Home.js";
 import Life from "./pages/life/Life.js";
@@ -12,10 +13,9 @@ import Projects from "./pages/projects/Projects.js";
 import Work from "./pages/work/Work.js";
 
 import "../assets/styles.css";
-import AuthRoute from "./global/auth/AuthRoute.js";
 
 const App = () => (
-  <div className="h-full bg-background">
+  <div className="app-wrapper h-full bg-background">
     <Router>
       <Switch>
         <Route exact path="/">
@@ -40,14 +40,16 @@ const App = () => (
           <Page component={Projects} />
         </Route>
 
+        <Route path="/designs">
+          <Page component={Designs} />
+        </Route>
+
         <Route path="/contact">
           <Page component={Contact} />
         </Route>
 
         <Route path="/edit">
-          <AuthRoute>
-            <Page component={Edit} />
-          </AuthRoute>
+          <Page component={Edit} />
         </Route>
       </Switch>
     </Router>

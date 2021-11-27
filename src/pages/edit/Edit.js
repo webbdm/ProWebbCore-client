@@ -1,64 +1,33 @@
 import React, { useContext, useEffect, useState } from "react";
-
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 import { UserContext } from "../../Store";
 
-import { projectApi, userApi } from "../../providers/api.js";
+import { userApi } from "../../providers/api.js";
 
 import ProfilePhoto from "../../../assets/gwebb_profile.jpg";
-
-const EditProject = ({ project, update }) => {
-  const [name, setName] = useState(project.name);
-  const [description, setDescription] = useState(project.description);
-
-  const [image, setImage] = useState(project.image);
-
-  const saveProject = () =>
-    projectApi.update(project.id, { ...project, name, description, image });
-
-  return (
-    <div className="flex flex-row flex-wrap lg:flex-no-wrap items-start justify-between my-4">
-      <div className="lg:h-32 sm:h-64 mb-2 rounded">
-        <img
-          className="sm:w-auto md:w-64 h-52 mr-4 mb-2 rounded-sm object-cover"
-          src={`${process.env.BUCKET_URL}/${image}`}
-        />
-      </div>
-      <div className="flex flex-col h-auto w-full md:ml-4">
-        <div className="flex flex-row justify-between bg-panel rounded-t border-accent border-b w-100">
-          <input
-            className="outline-none h-100 text-white bg-panel rounded-t focus:font-semibold cursor-pointer flex-grow p-2"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <div
-            className="bg-panel rounded px-4 py-1 mt-1 text-white cursor-pointer hover:font-semibold"
-            onClick={() => saveProject()}
-          >
-            Save
-          </div>
-        </div>
-        <textarea
-          className="bg-panel text-white h-40 w-100 outline-none rounded-b focus:font-semibold resize-none p-2"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        ></textarea>
-      </div>
-    </div>
-  );
-};
+import ProjectOrDesign from "./ProjectOrDesign";
 
 const Edit = () => {
   const [user] = useContext(UserContext);
-
   const [bio, setBio] = useState(user.bio);
-  const [image, setImage] = useState("");
+  const [isShowingModal, setIsShowingModal] = useState(false);
+  const [currentProject, setCurrentProject] = useState(null);
+
   const saveUser = () => userApi.update(user.id, { ...user, bio });
 
   useEffect(() => {
     setBio(user.bio);
   }, [user.bio]);
 
-  //if (!process.env.WRITE_ACCESS) return null;
+  const initModal = project => {
+    setIsShowingModal(true);
+    setCurrentProject(project)
+  }
+
+  const closeModal = () => {
+    setIsShowingModal(false);
+    setCurrentProject(null);
+  };
 
   if (!user) return null;
 
@@ -67,7 +36,7 @@ const Edit = () => {
       <div className="flex flex-row flex-wrap lg:flex-no-wrap justify-between items-center border-accent border-b my-4 ml-0 pb-2">
         <h1 className="text-white text-2xl">Bio</h1>
         <div
-          className="bg-panel rounded px-4 py-1 text-white cursor-pointer hover:border-accent hover:border"
+          className="bg-accent rounded-md px-4 py-1 text-primary cursor-pointer hover:border-accent hover:border"
           onClick={() => saveUser()}
         >
           Save
@@ -75,27 +44,40 @@ const Edit = () => {
       </div>
       <div className="flex flex-row flex-wrap justify-start mb-2">
         <img
-          className="lg:h-64 sm:h-56 sm:w-auto sm:h-auto md:w-auto rounded-t border-accent border-b-4"
+          className="lg:h-64 sm:h-56 sm:w-auto sm:h-auto md:w-auto rounded-l-md m-0 border-accent border-b-4"
           src={ProfilePhoto}
         />
         <textarea
           value={bio}
-          className="bg-panel p-2 flex-grow text-white lg:ml-4 resize-none focus:font-semibold rounded outline-none"
+          className="bg-panel p-2 flex-1 text-white lg:ml-0 resize-none focus:font-semibold rounded-r-md outline-none"
           onChange={(e) => setBio(e.target.value)}
         ></textarea>
       </div>
 
-      <div className="flex flex-row justify-between items-center border-accent border-b my-4 ml-0 pb-2">
-        <h1 className="text-white text-2xl m-0">Projects</h1>
-      </div>
-
-      <div className="flex flex-col w-full">
-        {user.projects.map((project) => (
-          <EditProject key={project.id} project={project} />
-        ))}
+      <div className="flex flex-col justify-between items-start border-accent border-b my-4 ml-0 pb-2">
+        <ProjectOrDesign
+          currentProject={currentProject}
+          initModal={initModal}
+          closeModal={closeModal}
+          isShowingModal={isShowingModal}
+          setIsShowingModal={setIsShowingModal}
+          projects={user.projects}
+          isProjectType={true} // Project type
+        />
+        <ProjectOrDesign
+          currentProject={currentProject}
+          initModal={initModal}
+          closeModal={closeModal}
+          isShowingModal={isShowingModal}
+          setIsShowingModal={setIsShowingModal}
+          projects={user.projects}
+          isProjectType={false} // Design Type
+        />
       </div>
     </div>
   );
 };
 
-export default Edit;
+export default withAuthenticationRequired(Edit, {
+  onRedirecting: () => <div>Access Required, redirecting...</div>,
+});

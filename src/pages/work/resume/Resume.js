@@ -7,7 +7,7 @@ import LinuxIcon from "../../../../assets/linux_logo.svg";
 import NodeIcon from "../../../../assets/node_logo.svg";
 import ReactIcon from "../../../../assets/react_logo.svg";
 import PHPIcon from "../../../../assets/php_logo.svg";
-import ProfileImage from "../../../../assets/gwebb_profile.jpg";
+import ProfileImage from "../../../../assets/profile.png";
 import DotnetIcon from "../../../../assets/dotnet_core_logo.svg";
 
 import "./Resume.css";
@@ -75,7 +75,7 @@ const Resume = ({ name, resumes }) => {
       <div className="user-panel flex-shrink text-white bg-panel rounded-md m-2">
         <img
           //className="border-accent rounded-t-md border-b-2"
-          className="m-0 h-auto w-full rounded-t object-cover border-accent border-b-2"
+          className="m-0 sm:h-auto lg:h-64 w-full rounded-t-md object-cover border-accent border-b-2"
           src={ProfileImage}
         />
         <h1 className="user-name text-5xl px-2 text-center text-white">

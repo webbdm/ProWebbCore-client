@@ -39,4 +39,8 @@ export const fileApi = {
 export const lifeApi = {
   getMeals: async () =>
     await axios.get(`${API_BASE_URL}/meal`),
+  getAllFoods: async () =>
+    await axios.get(`${API_BASE_URL}/food`),
+  addFoodToMeal: async body =>
+    await axios.post(`${API_BASE_URL}/meal/addFood`, body)
 };

@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { lifeApi } from "../../providers/api";
+import { Route, Switch } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Foods from "./foods/Foods";
 import Goals from "./goals/Goals";
 import Meals from "./meals/Meals";
-import { useFetch } from "../../hooks/useFetch.js";
-import { lifeApi } from "../../providers/api";
-import { Route, Switch } from "react-router-dom";
 import PWCLogos from "../../../assets/PWC Logos.svg";
-import { NavLink } from "react-router-dom";
 export const NutritionContext = React.createContext("Nutrition");
+
 const Nutrition = () => {
-    const { data } = useFetch(async () => await lifeApi.getMeals());
-    const { data: allFoods } = useFetch(async () => await lifeApi.getAllFoods());
+    const [meals, setMeals] = useState([]);
+    const [allFoods, setAllFoods] = useState([]);
+
+    async function loadNutritionData(){
+        await lifeApi.getMeals().then(m => setMeals(m.data));
+        await lifeApi.getAllFoods().then(f => setAllFoods(f.data));
+    };
+
+    useEffect(() => {
+        loadNutritionData();
+    },[]);
 
     const macros = [
         { goal_macro_id: 1, macro_id: "Protein", target_amount: 200, remaining_amount: 50 },
@@ -50,22 +59,14 @@ const Nutrition = () => {
         { title_name: "Goals", img_url: "https://prowebbcore-client.s3.amazonaws.com/Goals", path: "goals" },
         { title_name: "Foods", img_url: "https://prowebbcore-client.s3.amazonaws.com/Foods", path: "foods" },
     ];
-    const mappedMeals = data ? data.map((m => ({
-        id: m.id,
-        name: m.name,
-        date: m.date,
-        foods: m.foods.map((f) => ({
-            food_name: f.name,
-            brand_name: f.brand,
-            serving_size: "1 scoop",
-            protein: f.protein,
-            carbs: f.carbohydrate,
-            fat: f.fat,
-            calories: 150
-        }))
-    }))) : [];
     return (
-        <NutritionContext.Provider value={[allFoods, lifeApi.addFoodToMeal]}>
+        <NutritionContext.Provider value={[
+            allFoods,
+            lifeApi.addFoodToMeal,
+            meals,
+            setMeals,
+            setAllFoods
+        ]}>
             <div className="h-screen">
                 <div className="flex flex-row flex-nowrap justify-between bg-panel border-b-4 border-accent py-10 pr-2">
                     <div className="flex-1 text-white text-center py-2 px-2 flex flex-col justify-center rounded-r-lg bg-background mr-3">
@@ -108,7 +109,7 @@ const Nutrition = () => {
                             <Foods foods={foods} />
                         </Route>
                         <Route exact path="/nutrition/meals">
-                            <Meals foods={foods} meals={mappedMeals} />
+                            <Meals foods={foods} />
                         </Route>
                         <Route exact path="/nutrition/goals">
                             <Goals />

@@ -11,27 +11,47 @@ const MODAL_STYLES = {
     zIndex: 1000
 }
 
-const Meals = ({ meals }) => {
+const Meals = () => {
     const [isAddingFood, setIsAddingFood] = useState(false);
     const [meal, setMeal] = useState(null);
-    const [allFoods, addFoodToMeal] = useContext(NutritionContext);
-    if (!meals.length) return null;
-
+    const [allFoods, addFoodToMeal, meals, setMeals] = useContext(NutritionContext);
+    //if (!meals || meals.length)return null;
+    console.log(meals, 'yay');
     const openModal = meal => {
-        console.log(meal);
         setIsAddingFood(true);
-        setMeal(meal);    
+        setMeal(meal);
     };
 
     const closeModal = () => {
         setIsAddingFood(false);
-        setMeal(null);    
+        setMeal(null);
     };
+
+    const addFood = async (food) => {
+        const addedFood = await addFoodToMeal(food);
+        setMeals(meals.map(m => m.id === addedFood.data.mealId ? { ...m, foods: [...m.foods, addedFood.data] } : m));
+        closeModal();
+    };
+
+    const mappedMeals = meals ? meals.map((m => ({
+        id: m.id,
+        name: m.name,
+        date: m.date,
+        foods: m.foods.map((f) => ({
+            food_name: f.name,
+            brand_name: f.brand,
+            serving_size: "1 scoop",
+            protein: f.protein,
+            carbs: f.carbohydrate,
+            fat: f.fat,
+            calories: 150
+        }))
+    }))) : [];
     return <div className="flex flex-row flex-wrap h-100 py-1">
         <Modal isOpen={isAddingFood} onClose={() => closeModal()}>
             <div style={MODAL_STYLES} className="filter drop-shadow-2xl rounded-lg bg-panel">
                 <div className="px-2 py-1 text-center flex flex-row justify-between">
-                    <span className="font-bold text-white mx-2">Add foods {meal? meal.name : ''}</span>
+                    <span className="font-bold text-white mx-2">Add foods {meal ? meal.name : ''}</span>
                 </div>
                 <hr className="border border-b-2 border-accent"></hr>
                 <div className="pt-1 flex flex-col justify-between">
@@ -43,7 +63,7 @@ const Meals = ({ meals }) => {
                             </div>
                             <div class="mx-2">
                                 <span className="font-bold text-white mx-2">100</span>
-                                <span onClick={() => addFoodToMeal({ MealID: meal.id, FoodId: food.id })} className="font-bold text-accent mx-2 cursor-pointer">+</span>
+                                <span onClick={() => addFood({ MealID: meal.id, FoodId: food.id })} className="font-bold text-accent mx-2 cursor-pointer">+</span>
                             </div>
                         </div>)}
                     </div>
@@ -51,7 +71,7 @@ const Meals = ({ meals }) => {
                 </div>
             </div>
         </Modal>
-        {meals && meals.map(meal => <div className="m-2 flex-1">
+        {mappedMeals.map(meal => <div className="m-2 flex-1">
             <div className="rounded-lg bg-panel">
                 <div className="px-2 py-1 text-center flex flex-row justify-between">
                     <span className="font-bold text-white mx-1">{meal.name}</span>

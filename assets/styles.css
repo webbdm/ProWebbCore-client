@@ -24200,13 +24200,22 @@ body {
   /* font-family: 'Lexend Deca', sans-serif; */
 }
 
+.showable-target {
+  display: none;
+}
+
+.showable:hover .showable-target {
+  display: block;
+}
+
 .logo-font {
-  font-family: 'Lexend Deca', sans-serif;
+  font-family: "Lexend Deca", sans-serif;
   font-size: 6rem;
 }
 
-.life-module{
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji" !important;
+.life-module {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji" !important;
 }
 
 .icon {
@@ -24214,7 +24223,7 @@ body {
   width: 25px;
 }
 
-.macro-item{
+.macro-item {
   min-width: 60%;
 }
 

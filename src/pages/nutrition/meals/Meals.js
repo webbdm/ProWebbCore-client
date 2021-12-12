@@ -14,7 +14,7 @@ const MODAL_STYLES = {
 const Meals = () => {
     const [isAddingFood, setIsAddingFood] = useState(false);
     const [meal, setMeal] = useState(null);
-    const [allFoods, addFoodToMeal, meals, setMeals] = useContext(NutritionContext);
+    const [allFoods, addFoodToMeal, deleteFoodFromMeal,meals, setMeals] = useContext(NutritionContext);
     //if (!meals || meals.length)return null;
     console.log(meals, 'yay');
     const openModal = meal => {
@@ -33,11 +33,18 @@ const Meals = () => {
         closeModal();
     };
 
+    const handleFoodDelete = async (mealID, mealFoodID) => {
+        console.log(mealID,mealFoodID, 'beep');
+        const deleted = await deleteFoodFromMeal(mealFoodID);
+        setMeals(meals.map(m => m.id === mealID ? { ...m, foods: m.foods.filter(f => f.id != mealFoodID) } : m));
+    };
+
     const mappedMeals = meals ? meals.map((m => ({
         id: m.id,
         name: m.name,
         date: m.date,
         foods: m.foods.map((f) => ({
+            id: f.id,
             food_name: f.name,
             brand_name: f.brand,
             serving_size: "1 scoop",
@@ -82,7 +89,10 @@ const Meals = () => {
                     <div className="px-1 flex flex-row justify-between">
                     </div>
                     {meal.foods.map(food => <div className="px-1 flex flex-row justify-between">
-                        <span className="text-white mx-2">{food.food_name}</span>
+                        <div>
+                            <span className="text-white mx-2">{food.food_name}</span>
+                            <span className="text-white mx-2" onClick={() => handleFoodDelete(meal.id, food.id)}>X</span>
+                        </div>
                         <span className="font-bold text-white mx-2">{food.calories}</span>
                     </div>)}
                     <div onClick={() => openModal(meal)} className="mt-3 rounded-bl-lg rounded-br-lg bg-accent font-bold text-center cursor-pointer">+ Add</div>

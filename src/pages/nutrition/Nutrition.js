@@ -63,6 +63,7 @@ const Nutrition = () => {
         <NutritionContext.Provider value={[
             allFoods,
             lifeApi.addFoodToMeal,
+            lifeApi.deleteFoodFromMeal,
             meals,
             setMeals,
             setAllFoods

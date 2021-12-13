@@ -75,7 +75,7 @@ const Nutrition = () => {
                         <h1 className="text-lg lg:text-3xl">Calories</h1>
                     </div>
                     <div className="flex flex-row flex-wrap flex-1 justify-between">
-                        {macros.map(({ target_amount, remaining_amount, macro_id }) => <div className="macro-item flex flex-1 flex-row items-start justify-between">
+                        {macros.map(({ target_amount, remaining_amount, macro_id }) => <div className="macro-item flex flex-1 flex-row items-start justify-between" key={macro_id}>
                             <div className="flex flex-col justify-between">
                                 <div className="text-white text-md lg:text-3xl">{macro_id}</div>
                                 <p className="text-xs text-white font-thin">Remaining</p>
@@ -91,7 +91,7 @@ const Nutrition = () => {
                     <Switch>
                         <Route exact path="/Nutrition">
                             {titles.map(title =>
-                                <NavLink to={`/Nutrition/${title.path}`}><div style={{ height: '200px' }} className="cursor-pointer relative shadow-2xl flex-grow flex flex-row text-white rounded-lg md:m-6 m-3 bg-panel" key={title.title_name}>
+                                <NavLink to={`/Nutrition/${title.path}`} key={title.title_name}><div style={{ height: '200px' }} className="cursor-pointer relative shadow-2xl flex-grow flex flex-row text-white rounded-lg md:m-6 m-3 bg-panel">
                                     <React.Fragment>
                                         <div className="backdrop-filter backdrop-blur-sm flex flex-col justify-center text-center w-32 bg-paneltp absolute h-full rounded-l-lg p-4">
                                             <img src={PWCLogos} />

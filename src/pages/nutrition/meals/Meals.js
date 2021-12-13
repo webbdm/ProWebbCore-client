@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import { NutritionContext } from "../Nutrition";
 import Modal from "../../../global/modal/Modal";
+import AddFoodToMeal from "./AddFoodToMeal";
+import AddMeal from "./AddMeal";
 
 const MODAL_STYLES = {
     position: 'fixed',
@@ -71,29 +73,20 @@ const Meals = () => {
     return <div className="flex flex-row flex-wrap h-100 py-1">
         <Modal isOpen={isAddingFood} onClose={() => closeModal()}>
             <div style={MODAL_STYLES} className="filter drop-shadow-2xl rounded-lg bg-panel">
-                <div className="px-2 py-1 text-center flex flex-row justify-between">
-                    <span className="font-bold text-white mx-2">Add foods {meal ? meal.name : ''}</span>
-                </div>
-                <hr className="border border-b-2 border-accent"></hr>
-                <div className="pt-1 flex flex-col justify-between">
-                    <div className="px-1 flex flex-col justify-between">
-                        {allFoods.map(food => <div className="px-1 flex flex-row justify-between">
-                            <div className="mx-2" key={food.id}>
-                                <span className="text-white mr-2">{food.brand}</span>
-                                <span className="text-white">{food.name}</span>
-                            </div>
-                            <div class="mx-2">
-                                <span className="font-bold text-white mx-2">{sumFoodCalories(food)}</span>
-                                <span onClick={() => addFood({ MealID: meal.id, FoodId: food.id })} className="font-bold text-accent mx-2 cursor-pointer">+</span>
-                            </div>
-                        </div>)}
-                    </div>
-                    <div onClick={() => closeModal()} className="text-bg mt-3 rounded-bl-lg rounded-br-lg bg-accent font-bold text-center cursor-pointer">X Close</div>
-                </div>
+                <AddMeal
+                sumFoodCalories={sumFoodCalories}
+                closeTrigger={()=><div onClick={() => closeModal()} className="text-bg mt-3 rounded-bl-lg rounded-br-lg bg-accent font-bold text-center cursor-pointer">X Close</div>}/>
+                {/* <AddFoodToMeal
+                    meal={meal}
+                    foods={allFoods}
+                    addFood={addFood}
+                    sumFoodCalories={sumFoodCalories}
+                    closeTrigger={()=><div onClick={() => closeModal()} className="text-bg mt-3 rounded-bl-lg rounded-br-lg bg-accent font-bold text-center cursor-pointer">X Close</div>}                
+                /> */}
             </div>
         </Modal>
-        {mappedMeals.map(meal => <div className="m-2 flex-1">
-            <div className="rounded-lg bg-panel" key={meal.id}>
+        {mappedMeals.map(meal => <div className="m-2 flex-1" key={meal.id}>
+            <div className="rounded-lg bg-panel" >
                 <div className="px-2 py-1 text-center flex flex-row justify-between">
                     <span className="font-bold text-white mx-1">{meal.name}</span>
                     <span className="font-bold text-white mx-1"><span className="mr-2 text-sm font-thin"> Calories</span>{meal.calories}</span>
@@ -102,8 +95,8 @@ const Meals = () => {
                 <div className="pt-1 flex flex-col justify-between">
                     <div className="px-1 flex flex-row justify-between">
                     </div>
-                    {meal.foods.map(food => <div className="showable cursor-pointer px-1 flex flex-row justify-between">
-                        <div className="flex flex-row" key={food.id}>
+                    {meal.foods.map(food => <div className="showable cursor-pointer px-1 flex flex-row justify-between" key={food.id}>
+                        <div className="flex flex-row">
                             <span className="font-bold text-white mx-2">{food.brand_name}</span>
                             <span className="text-white mx-2">{food.food_name}</span>
                             <span className="showable-target font-bold text-red-600 mx-2" onClick={() => handleFoodDelete(meal.id, food.id)}>x</span>

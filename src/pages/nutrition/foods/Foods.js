@@ -13,7 +13,7 @@ const Foods = () => {
     serving_size: "0.5 cup"
     }))
     return <div className="flex flex-row flex-wrap h-100 py-1">
-        {foods.map(food => <div className="m-2 flex-1">
+        {foods.map(food => <div className="m-2 flex-1" key={food.id}>
             <div className="py-1 rounded-lg bg-panel">
                 <div className="px-2 py-1 text-center flex flex-row justify-start">
                     <span className="font-bold text-white mx-1">{food.brand_name}</span>

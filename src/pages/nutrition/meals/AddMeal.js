@@ -1,12 +1,16 @@
 import React, { Fragment, useState, useContext } from "react";
 import { NutritionContext } from "../Nutrition";
 
-const AddMeal = ({ closeTrigger, sumFoodCalories }) => {
+const AddMeal = ({ closeTrigger, onClose, sumFoodCalories }) => {
     const { allFoods, setMeals, createMeal, meals } = useContext(NutritionContext);
     const [foods] = useState(allFoods);
     const [meal, setMeal] = useState({ name: "", date: Date.now, foods: [] });
     const [name, setName] = useState(meal.name);
 
+    const saveAndClose = () => {
+        addMeal();
+        onClose();
+    }; 
     const handleNameChange = e => setName(e.target.value);
     const addFoodToMeal = food => setMeal({ ...meal, foods: [...meal.foods, food] });
     const addMeal = async () => setMeals([...meals, await (await createMeal({ ...meal, name: name })).data]);
@@ -34,7 +38,7 @@ const AddMeal = ({ closeTrigger, sumFoodCalories }) => {
             </div>
             <div className="flex flex-row w-100">
                 {closeTrigger()}
-                <div className="w-full text-bg mt-3 rounded-br-lg bg-accent font-bold text-center cursor-pointer" onClick={() => addMeal()}>Save</div>
+                <div className="w-full text-bg mt-3 rounded-br-lg bg-accent font-bold text-center cursor-pointer" onClick={() => saveAndClose()}>Save</div>
             </div>
         </div>
     </Fragment>

@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-const AddFoodToMeal = ({ meal, foods, addFood,closeTrigger, sumFoodCalories}) => {
+const AddFoodToMeal = ({ meal, foods, addFood, closeTrigger, sumFoodCalories}) => {
     return <Fragment>
         <div className="px-2 py-1 text-center flex flex-row justify-between">
             <span className="font-bold text-white mx-2">Add foods {meal ? meal.name : ''}</span>

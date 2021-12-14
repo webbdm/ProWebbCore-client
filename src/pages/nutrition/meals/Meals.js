@@ -107,20 +107,14 @@ const Meals = () => {
                 <div style={MODAL_STYLES} className="filter drop-shadow-2xl rounded-lg bg-panel">
                     <AddMeal
                         sumFoodCalories={sumFoodCalories}
+                        onClose={()=>closeAddMealModal()}
                         closeTrigger={() => <div onClick={() => closeAddMealModal()} className="w-full text-bg mt-3 rounded-bl-lg bg-accent font-bold text-center cursor-pointer">Cancel</div>} />
-                    {/* <AddFoodToMeal
-                    meal={meal}
-                    foods={allFoods}
-                    addFood={addFood}
-                    sumFoodCalories={sumFoodCalories}
-                    closeTrigger={()=><div onClick={() => closeModal()} className="text-bg mt-3 rounded-bl-lg rounded-br-lg bg-accent font-bold text-center cursor-pointer">X Close</div>}                
-                /> */}
                 </div>
             </Modal>
             {mappedMeals.map(meal => <div className="m-2 flex-1" key={meal.id}>
-                <div className="rounded-lg bg-panel" >
+                <div className="rounded-lg bg-panel">
                     <div className="px-2 py-1 text-center flex flex-row justify-between">
-                        <span className="font-bold text-white mx-1">{meal.name} <span onClick={() => handleMealDelete(meal.id)} className="text-red-600 mx-2">X</span></span>
+                        <span className="font-bold text-white mx-1 flex flex-row showable cursor-pointer">{meal.name} <span onClick={() => handleMealDelete(meal.id)} className="text-red-600 mx-2 showable-target">X</span></span>
                         <span className="font-bold text-white mx-1"><span className="mr-2 text-sm font-thin"> Calories</span>{meal.calories}</span>
                     </div>
                     <hr className="border border-b-2 border-accent"></hr>

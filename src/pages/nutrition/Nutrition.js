@@ -6,6 +6,8 @@ import Foods from "./foods/Foods";
 import Goals from "./goals/Goals";
 import Meals from "./meals/Meals";
 import PWCLogos from "../../../assets/PWC Logos.svg";
+
+
 export const NutritionContext = React.createContext("Nutrition");
 
 const Nutrition = () => {
@@ -59,15 +61,17 @@ const Nutrition = () => {
         { title_name: "Goals", img_url: "https://prowebbcore-client.s3.amazonaws.com/Goals", path: "goals" },
         { title_name: "Foods", img_url: "https://prowebbcore-client.s3.amazonaws.com/Foods", path: "foods" },
     ];
+
     return (
-        <NutritionContext.Provider value={[
-            allFoods,
-            lifeApi.addFoodToMeal,
-            lifeApi.deleteFoodFromMeal,
+        <NutritionContext.Provider value={  {allFoods,
             meals,
             setMeals,
-            setAllFoods
-        ]}>
+            setAllFoods,
+            addFoodToMeal: lifeApi.addFoodToMeal,
+            createMeal: lifeApi.createMeal,
+            deleteMeal: lifeApi.deleteMeal,
+            deleteFoodFromMeal:  lifeApi.deleteFoodFromMeal
+        }}>
             <div className="h-screen">
                 <div className="flex flex-row flex-nowrap justify-between bg-panel border-b-4 border-accent py-10 pr-2">
                     <div className="flex-1 text-white text-center py-2 px-2 flex flex-col justify-center rounded-r-lg bg-background mr-3">

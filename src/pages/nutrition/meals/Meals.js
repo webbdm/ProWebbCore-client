@@ -42,8 +42,10 @@ const Meals = () => {
 
     const addFood = async (food) => {
         const addedFood = await addFoodToMeal(food);
-        setMeals(meals.map(m => m.id === addedFood.data.mealId ? { ...m, foods: [...m.foods, addedFood.data] } : m));
-        closeModal();
+        setMeals(meals.map(m => m.id === addedFood.data.mealId ? { ...m, foods: [...m.foods, { ...addedFood.data, 
+            brand_name: addedFood.data.name,
+            food_name: addedFood.data.name }] } : m));
+        closeAddFoodModal();
     };
 
     const handleMealDelete = async mealID => {
@@ -58,35 +60,6 @@ const Meals = () => {
 
     const sumFoodCalories = food => [food.carbohydrate * 4, food.protein * 4, food.fat * 9].reduce((a, b) => a + b, 0);
 
-    const sumMealFoodCalories = foods => {
-        let carbCal = 0;
-        let fatCal = 0;
-        let proteinCal = 0;
-        foods.map(f => {
-            // all per (1) gram
-            carbCal += f.carbohydrate * 4;
-            proteinCal += f.protein * 4;
-            fatCal += f.fat * 9;
-        })
-        return [carbCal, proteinCal, fatCal].reduce((a, b) => a + b, 0);
-    };
-
-    const mappedMeals = meals ? meals.map((m => ({
-        id: m.id,
-        name: m.name,
-        date: m.date,
-        calories: sumMealFoodCalories(m.foods),
-        foods: m.foods.map((f) => ({
-            id: f.id,
-            food_name: f.name,
-            brand_name: f.brand,
-            serving_size: "1 scoop",
-            protein: f.protein,
-            carbohydrate: f.carbohydrate,
-            fat: f.fat,
-            calories: 150
-        }))
-    }))) : [];
     return <div className="flex flex-col py-2">
         <div className="flex flex-row justify-end">
             <div className="bg-accent cursor-pointer rounded-lg p-3 mr-2 font-bold text-primary" onClick={() => openAddingMealModal()}>+ Add Meal</div>
@@ -107,11 +80,11 @@ const Meals = () => {
                 <div style={MODAL_STYLES} className="filter drop-shadow-2xl rounded-lg bg-panel">
                     <AddMeal
                         sumFoodCalories={sumFoodCalories}
-                        onClose={()=>closeAddMealModal()}
+                        onClose={() => closeAddMealModal()}
                         closeTrigger={() => <div onClick={() => closeAddMealModal()} className="w-full text-bg mt-3 rounded-bl-lg bg-accent font-bold text-center cursor-pointer">Cancel</div>} />
                 </div>
             </Modal>
-            {mappedMeals.map(meal => <div className="m-2 flex-1" key={meal.id}>
+            {meals && meals.map(meal => <div className="m-2 flex-1" key={meal.id}>
                 <div className="rounded-lg bg-panel">
                     <div className="px-2 py-1 text-center flex flex-row justify-between">
                         <span className="font-bold text-white mx-1 flex flex-row showable cursor-pointer">{meal.name} <span onClick={() => handleMealDelete(meal.id)} className="text-red-600 mx-2 showable-target">X</span></span>

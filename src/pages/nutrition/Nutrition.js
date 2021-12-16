@@ -14,14 +14,14 @@ const Nutrition = () => {
     const [meals, setMeals] = useState([]);
     const [allFoods, setAllFoods] = useState([]);
 
-    async function loadNutritionData(){
-        await lifeApi.getMeals().then(m => setMeals(m.data));
+    async function loadNutritionData() {
+        await lifeApi.getMeals().then(m => setMeals(mappedMeals(m.data)));
         await lifeApi.getAllFoods().then(f => setAllFoods(f.data));
     };
 
     useEffect(() => {
         loadNutritionData();
-    },[]);
+    }, []);
 
     const macros = [
         { goal_macro_id: 1, macro_id: "Protein", target_amount: 200, remaining_amount: 50 },
@@ -62,30 +62,99 @@ const Nutrition = () => {
         { title_name: "Foods", img_url: "https://prowebbcore-client.s3.amazonaws.com/Foods", path: "foods" },
     ];
 
+    const getTotalCalories = meals =>
+        meals
+            .map(m => sumMealFoodCalories(m.foods))
+            .reduce((a, b) => a + b, 0);
+
+    const getMacroGroupings = meals => {
+        const foodMacros = meals.map(m => m.foods.map(f => ({
+            proteinCal: f.protein * 4,
+            proteinGrams: f.protein,
+            carbsCal: f.carbohydrate * 4,
+            carbsGrams: f.carbohydrate,
+            fatCal: f.fat * 9,
+            fatGrams: f.fat,
+            totalFoodCal: [f.carbohydrate * 4, f.fat * 9, f.protein * 4].reduce((a, b) => a + b, 0)
+        })));
+
+        let carbCal = 0;
+        let fatCal = 0;
+        let proteinCal = 0;
+        let carbGrams = 0;
+        let fatGrams = 0;
+        let proteinGrams = 0;
+
+        [].concat.apply([], foodMacros).map(m => {
+            proteinCal += m.proteinCal;
+            proteinGrams += m.proteinGrams;
+            carbCal += m.carbsCal;
+            carbGrams += m.carbsGrams;
+            fatCal += m.fatCal;
+            fatGrams += m.fatGrams;
+        });
+        return {
+            1: { cal: proteinCal, grams: proteinGrams },
+            2: { cal: fatCal, grams: fatGrams },
+            3: { cal: carbCal, grams: carbGrams },
+            totalCal: [proteinCal, carbCal, fatCal].reduce((a, b) => a + b, 0)
+        };
+    };
+    const sumMealFoodCalories = foods => {
+        let carbCal = 0;
+        let fatCal = 0;
+        let proteinCal = 0;
+        foods.map(f => {
+            // all per (1) gram
+            carbCal += f.carbohydrate * 4;
+            proteinCal += f.protein * 4;
+            fatCal += f.fat * 9;
+        })
+        return [carbCal, proteinCal, fatCal].reduce((a, b) => a + b, 0);
+    };
+
+    const mappedMeals = meals => meals.map((m => ({
+        id: m.id,
+        name: m.name,
+        date: m.date,
+        calories: sumMealFoodCalories(m.foods),
+        foods: m.foods.map((f) => ({
+            id: f.id,
+            food_name: f.name,
+            brand_name: f.brand,
+            serving_size: "1 scoop",
+            protein: f.protein,
+            carbohydrate: f.carbohydrate,
+            fat: f.fat,
+            calories: 150
+        }))
+    })));
+
     return (
-        <NutritionContext.Provider value={  {allFoods,
+        <NutritionContext.Provider value={{
+            allFoods,
             meals,
             setMeals,
             setAllFoods,
             addFoodToMeal: lifeApi.addFoodToMeal,
             createMeal: lifeApi.createMeal,
             deleteMeal: lifeApi.deleteMeal,
-            deleteFoodFromMeal:  lifeApi.deleteFoodFromMeal
+            deleteFoodFromMeal: lifeApi.deleteFoodFromMeal
         }}>
             <div className="h-screen">
                 <div className="flex flex-row flex-nowrap justify-between bg-panel border-b-4 border-accent py-10 pr-2">
                     <div className="flex-1 text-white text-center py-2 px-2 flex flex-col justify-center rounded-r-lg bg-background mr-3">
-                        <h1 className="text-5xl lg:text-6xl">2600</h1>
+                        <h1 className="text-5xl lg:text-6xl">{getTotalCalories(meals)}</h1>
                         <h1 className="text-lg lg:text-3xl">Calories</h1>
                     </div>
                     <div className="flex flex-row flex-wrap flex-1 justify-between">
-                        {macros.map(({ target_amount, remaining_amount, macro_id }) => <div className="macro-item flex flex-1 flex-row items-start justify-between" key={macro_id}>
+                        {macros.map(({ goal_macro_id, target_amount, remaining_amount, macro_id }) => <div className="macro-item flex flex-1 flex-row items-start justify-between" key={macro_id}>
                             <div className="flex flex-col justify-between">
                                 <div className="text-white text-md lg:text-3xl">{macro_id}</div>
                                 <p className="text-xs text-white font-thin">Remaining</p>
                             </div>
                             <div className="flex flex-col justify-between items-end">
-                                <div className="text-white text-sm lg:text-3xl">{target_amount}</div>
+                                <div className="text-white text-sm lg:text-3xl">{getMacroGroupings(meals)[goal_macro_id].cal}</div>
                                 <div className="text-white text-xs lg:text-2xl">{remaining_amount}</div>
                             </div>
                         </div>)}

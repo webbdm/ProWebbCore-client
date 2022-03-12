@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
 import { NutritionContext } from "../Nutrition";
+
 const Foods = () => {
-    const [allFoods] = useContext(NutritionContext);
-    const foods = test.map(f=>({
-    id: f.id,
-    brand_name: f.brand,
-    calories: 100,
-    carbs: f.carbohydrate,
-    fat: f.fat,
-    food_name: f.name,
-    protein: f.protein,
-    serving_size: "0.5 cup"
+    const { allFoods } = useContext(NutritionContext);
+    const foods = allFoods.map(f => ({
+        id: f.id,
+        brand_name: f.brand,
+        calories: 100,
+        carbs: f.carbohydrate,
+        fat: f.fat,
+        food_name: f.name,
+        protein: f.protein,
+        serving_size: "0.5 cup"
     }))
     return <div className="flex flex-row flex-wrap h-100 py-1">
         {foods.map(food => <div className="m-2 flex-1" key={food.id}>
@@ -28,7 +29,7 @@ const Foods = () => {
                         </span>
                         <span className="my-1 mx-3">
                             Protein
-               </span>
+                        </span>
                     </div>
                     <div className="flex flex-col text-center text-white">
                         <span className="font-bold my-1 mx-3">
@@ -36,7 +37,7 @@ const Foods = () => {
                         </span>
                         <span className="my-1 mx-3">
                             Carbohydrates
-               </span>
+                        </span>
                     </div>
                     <div className="flex flex-col text-center text-white">
                         <span className="font-bold my-1 mx-3">
@@ -44,7 +45,7 @@ const Foods = () => {
                         </span>
                         <span className="my-1 mx-3">
                             Fat
-                    </span>
+                        </span>
                     </div>
                     <div className="flex flex-col text-center text-white">
                         <span className="font-bold m-1">
@@ -52,7 +53,7 @@ const Foods = () => {
                         </span>
                         <span className="my-1 mx-3">
                             Calories
-                    </span>
+                        </span>
                     </div>
                 </div>
             </div>

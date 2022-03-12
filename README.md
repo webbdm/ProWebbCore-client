@@ -9,7 +9,7 @@ React app powered by a .NET Core API (fully functional CMS) behind NGINX, runnin
 
 ## Content Managment System
 ![CMS](https://prowebbcore-client.s3.amazonaws.com/webbdm_cms.png)
-![CMS edit](https://prowebbcore-client.s3.amazonaws.com/webbdm_cms2.png))
+![CMS edit](https://prowebbcore-client.s3.amazonaws.com/webbdm_cms2.png)
 
 ## Fully Responsive
 ![Responsive](https://prowebbcore-client.s3.amazonaws.com/webbdm_responsive.png)

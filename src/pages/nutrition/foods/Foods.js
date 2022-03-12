@@ -1,7 +1,20 @@
-import React from "react";
-const Foods = ({ foods }) => {
+import React, { useContext } from "react";
+import { NutritionContext } from "../Nutrition";
+
+const Foods = () => {
+    const { allFoods } = useContext(NutritionContext);
+    const foods = allFoods.map(f => ({
+        id: f.id,
+        brand_name: f.brand,
+        calories: 100,
+        carbs: f.carbohydrate,
+        fat: f.fat,
+        food_name: f.name,
+        protein: f.protein,
+        serving_size: "0.5 cup"
+    }))
     return <div className="flex flex-row flex-wrap h-100 py-1">
-        {foods.map(food => <div className="m-2 flex-1">
+        {foods.map(food => <div className="m-2 flex-1" key={food.id}>
             <div className="py-1 rounded-lg bg-panel">
                 <div className="px-2 py-1 text-center flex flex-row justify-start">
                     <span className="font-bold text-white mx-1">{food.brand_name}</span>
@@ -11,36 +24,36 @@ const Foods = ({ foods }) => {
                 <hr class="border border-b-2 border-accent"></hr>
                 <div className="flex flex-row justify-between p-1">
                     <div className="mx-2 flex flex-col text-center text-white">
-                        <span class="font-bold my-1 mx-3">
+                        <span className="font-bold my-1 mx-3">
                             {food.protein}
                         </span>
-                        <span class="my-1 mx-3">
+                        <span className="my-1 mx-3">
                             Protein
-               </span>
+                        </span>
                     </div>
                     <div className="flex flex-col text-center text-white">
-                        <span class="font-bold my-1 mx-3">
+                        <span className="font-bold my-1 mx-3">
                             {food.carbs}
                         </span>
-                        <span class="my-1 mx-3">
+                        <span className="my-1 mx-3">
                             Carbohydrates
-               </span>
+                        </span>
                     </div>
                     <div className="flex flex-col text-center text-white">
-                        <span class="font-bold my-1 mx-3">
+                        <span className="font-bold my-1 mx-3">
                             {food.fat}
                         </span>
-                        <span class="my-1 mx-3">
+                        <span className="my-1 mx-3">
                             Fat
-                    </span>
+                        </span>
                     </div>
                     <div className="flex flex-col text-center text-white">
-                        <span class="font-bold m-1">
+                        <span className="font-bold m-1">
                             {food.calories}
                         </span>
-                        <span class="my-1 mx-3">
+                        <span className="my-1 mx-3">
                             Calories
-                    </span>
+                        </span>
                     </div>
                 </div>
             </div>

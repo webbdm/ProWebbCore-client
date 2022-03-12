@@ -4,6 +4,16 @@ import { useFetch } from "./hooks/useFetch.js";
 
 export const UserContext = React.createContext("User");
 
+
+const combineProviders = (providers) => providers.reduce(
+  (Combined, Provider) => ({ children }) => (
+    <Combined>
+      <Provider>{children}</Provider>
+    </Combined>
+  )
+);
+const Providers = combineProviders([UserContext.Provider]);
+
 const Store = ({ children }) => {
   const [user, setUser] = useState({
     id: null,

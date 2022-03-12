@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
-
-import LaravelIcon from "../../../../assets/laravel_logo.svg";
-import LinuxIcon from "../../../../assets/linux_logo.svg";
+import VueIcon from "../../../../assets/vue_logo.png";
+import BlazorIcon from "../../../../assets/blazor_logo.png";
 import NodeIcon from "../../../../assets/node_logo.svg";
 import ReactIcon from "../../../../assets/react_logo.svg";
-import PHPIcon from "../../../../assets/php_logo.svg";
 import ProfileImage from "../../../../assets/profile.png";
 import DotnetIcon from "../../../../assets/dotnet_core_logo.svg";
 
@@ -21,12 +19,10 @@ const mapSkillImages = (name) => {
       return DotnetIcon;
     case "Node":
       return NodeIcon;
-    case "PHP":
-      return PHPIcon;
-    case "Laravel":
-      return LaravelIcon;
-    case "Ubuntu/Linux":
-      return LinuxIcon;
+    case "Blazor":
+      return BlazorIcon;
+    case "Vue":
+      return VueIcon;
     default:
       break;
   }

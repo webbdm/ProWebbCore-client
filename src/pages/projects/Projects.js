@@ -7,7 +7,7 @@ const Tags = ({ tags }) => (
   <div className="ml-2 mb-1 flex flex-row flex-wrap">
     {tags.map((tag) => (
       <span
-        className="mx-2 px-2 p-1 my-1 flex-grow align-bottom rounded bg-accent text-center text-primary text-xs"
+        className="mx-2 px-2 p-1 my-1 flex-grow align-bottom rounded-md bg-accent text-center text-primary text-xs"
         key={tag}
       >
         {tag}

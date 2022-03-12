@@ -39,4 +39,14 @@ export const fileApi = {
 export const lifeApi = {
   getMeals: async () =>
     await axios.get(`${API_BASE_URL}/meal`),
+  getAllFoods: async () =>
+    await axios.get(`${API_BASE_URL}/food`),
+  createMeal: async meal =>
+    await axios.post(`${API_BASE_URL}/meal`, meal),
+  deleteMeal: async mealID =>
+    await axios.delete(`${API_BASE_URL}/meal/deleteMeal/${mealID}`),
+  addFoodToMeal: async body =>
+    await axios.post(`${API_BASE_URL}/meal/addFood`, body),
+  deleteFoodFromMeal: async mealFoodID =>
+    await axios.delete(`${API_BASE_URL}/meal/deleteFood/${mealFoodID}`)
 };

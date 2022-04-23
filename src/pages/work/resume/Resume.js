@@ -44,7 +44,7 @@ const Job = ({ job }) => {
               <span>{moment(endDate).format("MMM YYYY")}</span>
             </React.Fragment>
           ) : (
-            <div>April 2021 - present</div>
+            <div>Apr 2022 - present</div>
           )}
         </span>
       </div>
